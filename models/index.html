@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gesture Recognition</title>
+</head>
+
+<body>
+
+  <h1 style="text-align: center;">Kodály Hand Sign Recognition</h1>
+  <div style="text-align: center;">
+    <button id="button_webcam" disabled onclick="displayCamera(); this.style.display='none'; startWebcam();" style="display: inline-block; max-width: 640px; border: none; background-color: #04AA6D; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer; text-align: center;">
+      Model Loading...
+    </button>
+    
+  </div>
+
+  <div id="slides" style="text-align: center;">
+    <br/>
+    <img class="mySlides" src="./slides/Do.jpg" style="max-width:640px">
+    <img class="mySlides" src="./slides/Re.jpg" style="max-width:640px">
+    <img class="mySlides" src="./slides/Mi.jpg" style="max-width:640px">
+    <img class="mySlides" src="./slides/Fa.jpg" style="max-width:640px">
+    <img class="mySlides" src="./slides/So.jpg" style="max-width:640px">
+    <img class="mySlides" src="./slides/La.jpg" style="max-width:640px">
+    <img class="mySlides" src="./slides/Ti.jpg" style="max-width:640px">
+  </div>
+
+  <script>
+  var slideIndex = 0;
+  carousel();
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "inline"; 
+    setTimeout(carousel, 2000); 
+  }
+  </script>
+
+  <h1 id="mobile" style="text-align: center;">Turn on audio on your device</h1>
+
+  <script>
+    let details = navigator.userAgent;
+    let regexp = /android|iphone|kindle|ipad/i;
+    let isMobileDevice = regexp.test(details);
+    if (!isMobileDevice) {
+      document.getElementById("mobile").style.display = "none";
+    }
+  </script>
+
+  <script>
+  function displayCamera() {
+    document.getElementById("slides").style.display = "none";
+    document.getElementById("canvas").style.display = "block";
+  }
+  </script>
+
+  <div id="canvas" style="text-align: center; display: none"></div>
+
+  <!-- include js libraries -->
+  <script src="./js/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="./js/hands.js" crossorigin="anonymous"></script>
+  <script src="./js/p5.js"></script>
+  <script src="./js/sketch.js"></script>
+  <script type="text/javascript" src="./js/NexusUI.js"></script>
+  <script type="text/javascript" src="./js/Tone.js"></script>
+  <script type="text/javascript" src="./js/Tonejs-Instruments.js"></script>
+  <script type="module" src="./js/script.js"></script>
+ 
+
+
+  </body>
+
+</html>
