@@ -59,6 +59,9 @@ function draw() {
       noStroke();
       fill(255, 255, 255);
       textSize(20);
+        let thisColor = randomColor[i];
+      //set the color
+      /*
       if (i < randomColor.length)
       {
         let thisColor = randomColor[i];
@@ -66,7 +69,7 @@ function draw() {
       else
       {
         let thisColor = randomColor[i%randomColor.length];
-      }
+      }*/
       let name = gestures_results.gestures[i][0].categoryName;
       //let score = gestures_results.gestures[i][0].score;
       //let right_or_left = gestures_results.handednesses[i][0].hand;
@@ -84,7 +87,7 @@ function draw() {
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(str(i), pos.x, pos.y);
+      text("", pos.x, pos.y);
 
     //point colors
     if (gestures_results.landmarks) {
