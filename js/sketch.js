@@ -70,7 +70,7 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(255,255,255);
+          fill(randomColor[i]);
           stroke(255);
           break;
       }
@@ -87,7 +87,7 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(255,255,255);
+              fill(randomColor[i]);
               break;
           }
           circle(landmark.x * width, landmark.y * height, 10);
