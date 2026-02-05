@@ -56,7 +56,7 @@ function draw() {
     // ジェスチャーの結果を表示する
     for (let i = 0; i < gestures_results.gestures.length; i++) {
       noStroke();
-      fill(255, 0, 0);
+      fill(0,255,0, 0);
       textSize(20);
       let name = gestures_results.gestures[i][0].categoryName;
       let score = gestures_results.gestures[i][0].score;
@@ -69,29 +69,8 @@ function draw() {
       //coloring
       switch (name)
       {
-        case "Do": 
-          fill(255,0,0);
-          break;
-        case "Re": 
-          fill(255,127,0);
-          break;
-        case "Mi": 
-          fill(255,255,0);
-          break;
         case "Pointing_Up": 
-          fill(0,255,0);
-          break;
-        case "So": 
-          fill(0,0,255);
-          break;
-        case "La": 
-          fill(75,0,130);
-          break;
-        case "Ti": 
-          fill(148,0,211);
-          break;
-        case "None":
-          fill(0, 0, 0);
+          fill(0,255,0, 0);
           break;
       }
       textSize(48);
