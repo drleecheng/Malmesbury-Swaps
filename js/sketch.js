@@ -90,7 +90,7 @@ function draw() {
         case "Ti": 
           fill(148,0,211);
           break;
-        case "none":
+        case "None":
           fill(0, 0, 0);
           break;
       }
