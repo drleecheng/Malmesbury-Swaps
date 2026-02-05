@@ -75,9 +75,9 @@ function draw() {
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(name, pos.x, pos.y);
+      text(right_or_left, pos.x, pos.y);
 
-
+    //point colors
     if (gestures_results.landmarks) {
       for (const landmarks of gestures_results.landmarks) {
         for (let landmark of landmarks) {
@@ -86,30 +86,8 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(255,0,0);
-              break;
-            case "Re": 
-              fill(255,127,0);
-              break;
-            case "Mi": 
-              fill(255,255,0);
-              break;
-            case "Fa": 
               fill(0,255,0);
               break;
-            case "So": 
-              fill(0,0,255);
-              break;
-            case "La": 
-              fill(75,0,130);
-              break;
-            case "Ti": 
-              fill(148,0,211);
-              break;
-            case "none":
-              fill(0);
-              break;
-              
           }
           circle(landmark.x * width, landmark.y * height, 10);
         }
