@@ -1,7 +1,7 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-//let randomColor = [color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192)];
+var randomColor = [color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192)];
 var current;
 var instruments;
 var current_note = 0;
