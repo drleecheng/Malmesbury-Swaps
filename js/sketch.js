@@ -69,13 +69,13 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(0,255,0, 255);
+          fill(random(255), random(255), random(255), 255);
           stroke(255);
           break;
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(name, pos.x, pos.y);
+      text("", pos.x, pos.y);
 
     //point colors
     if (gestures_results.landmarks) {
@@ -86,7 +86,7 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(0,255,0);
+              fill(random(255), random(255), random(255));
               break;
           }
           circle(landmark.x * width, landmark.y * height, 10);
