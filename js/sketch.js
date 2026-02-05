@@ -57,7 +57,7 @@ function draw() {
     // ジェスチャーの結果を表示する
     for (let i = 0; i < gestures_results.gestures.length; i++) {
       noStroke();
-      fill(0, 0, 0);
+      fill(255, 255, 255);
       textSize(20);
       let name = gestures_results.gestures[i][0].categoryName;
       let thisColor = randomColor[i];
@@ -71,7 +71,7 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(thisColor);
+          fill(random(255), random(255), random(255));
           stroke(255);
           break;
       }
@@ -88,7 +88,7 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(thisColor);
+              fill(random(255), random(255), random(255));
               break;
           }
           circle(landmark.x * width, landmark.y * height, 10);
