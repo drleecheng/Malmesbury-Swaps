@@ -70,7 +70,7 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(0,255,0, 0);
+          fill(0,255,0, 255);
           break;
       }
       textSize(48);
