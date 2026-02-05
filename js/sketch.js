@@ -59,6 +59,14 @@ function draw() {
       noStroke();
       fill(255, 255, 255);
       textSize(20);
+      if (i < randomColor.length)
+      {
+        let thisColor = randomColor[i];
+      }
+      else
+      {
+        let thisColor = randomColor[i%randomColor.length];
+      }
       let name = gestures_results.gestures[i][0].categoryName;
       //let score = gestures_results.gestures[i][0].score;
       //let right_or_left = gestures_results.handednesses[i][0].hand;
@@ -70,7 +78,7 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(randomColor[i]);
+          fill(thisColor);
           stroke(255);
           break;
       }
@@ -87,7 +95,7 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(randomColor[i]);
+              fill(thisColor);
               break;
           }
           circle(landmark.x * width, landmark.y * height, 10);
