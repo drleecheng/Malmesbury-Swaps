@@ -1,7 +1,7 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-let randomColor = [color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192)]
+let randomColor = [color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192)];
 var current;
 var instruments;
 var current_note = 0;
@@ -57,7 +57,7 @@ function draw() {
     // ジェスチャーの結果を表示する
     for (let i = 0; i < gestures_results.gestures.length; i++) {
       noStroke();
-      fill(0,255,0, 0);
+      fill(0, 0, 0);
       textSize(20);
       let name = gestures_results.gestures[i][0].categoryName;
       let thisColor = randomColor[i];
@@ -71,7 +71,7 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(random(255), random(255), random(255), 255);
+          fill(thisColor);
           stroke(255);
           break;
       }
@@ -88,7 +88,7 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(random(255), random(255), random(255));
+              fill(thisColor);
               break;
           }
           circle(landmark.x * width, landmark.y * height, 10);
