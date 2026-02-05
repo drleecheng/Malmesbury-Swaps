@@ -1,6 +1,7 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
+let randomColor = [color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192)]
 var current;
 var instruments;
 var current_note = 0;
@@ -59,6 +60,7 @@ function draw() {
       fill(0,255,0, 0);
       textSize(20);
       let name = gestures_results.gestures[i][0].categoryName;
+      let thisColor = randomColor[i];
       //let score = gestures_results.gestures[i][0].score;
       //let right_or_left = gestures_results.handednesses[i][0].hand;
       pos = {
@@ -69,7 +71,7 @@ function draw() {
       switch (name)
       {
         case "Pointing_Up": 
-          fill(random(255), random(255), random(255), 255);
+          fill(thisColor, 255);
           stroke(255);
           break;
       }
@@ -86,7 +88,7 @@ function draw() {
           switch (name)
           {
             case "Pointing_Up": 
-              fill(random(255), random(255), random(255));
+              fill(thisColor);
               break;
           }
           circle(landmark.x * width, landmark.y * height, 10);
