@@ -65,12 +65,12 @@ function draw() {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
       };
-      stroke(255);
-      //coloring
+      //text overlay and coloring
       switch (name)
       {
         case "Pointing_Up": 
           fill(0,255,0, 255);
+          stroke(255);
           break;
       }
       textSize(48);
@@ -85,7 +85,7 @@ function draw() {
           strokeWeight(2);
           switch (name)
           {
-            case "Do": 
+            case "Pointing_Up": 
               fill(255,0,0);
               break;
             case "Re": 
