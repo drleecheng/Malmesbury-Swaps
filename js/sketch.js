@@ -2,6 +2,7 @@ let gestures_results;
 let cam = null;
 let p5canvas = null;
 var randomColor = [];
+var thisColor;
 var current;
 var instruments;
 var current_note = 0;
@@ -59,7 +60,7 @@ function draw() {
       noStroke();
       fill(255, 255, 255);
       textSize(20);
-        let thisColor = randomColor[i];
+      thisColor = randomColor[i];
       //set the color
       /*
       if (i < randomColor.length)
