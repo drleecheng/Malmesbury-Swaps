@@ -59,8 +59,8 @@ function draw() {
       fill(0,255,0, 0);
       textSize(20);
       let name = gestures_results.gestures[i][0].categoryName;
-      let score = gestures_results.gestures[i][0].score;
-      let right_or_left = gestures_results.handednesses[i][0].hand;
+      //let score = gestures_results.gestures[i][0].score;
+      //let right_or_left = gestures_results.handednesses[i][0].hand;
       pos = {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
@@ -75,7 +75,7 @@ function draw() {
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(right_or_left, pos.x, pos.y);
+      text(name, pos.x, pos.y);
 
     //point colors
     if (gestures_results.landmarks) {

@@ -28,7 +28,7 @@ const createGestureRecognizer = async () => {
             delegate: "GPU"
         },
         runningMode: runningMode,
-        numHands: 1
+        numHands: 2
     });
     document.querySelector('#button_webcam').disabled = false;
     document.querySelector('#button_webcam').innerHTML = "Enable Webcam";
