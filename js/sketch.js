@@ -66,6 +66,7 @@ function draw() {
         y: gestures_results.landmarks[i][0].y * height,
       };
       stroke(255);
+      //coloring
       switch (name)
       {
         case "Do": 
@@ -77,7 +78,7 @@ function draw() {
         case "Mi": 
           fill(255,255,0);
           break;
-        case "Fa": 
+        case "Pointing_Up": 
           fill(0,255,0);
           break;
         case "So": 
