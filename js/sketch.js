@@ -89,7 +89,7 @@ function draw() {
     // ジェスチャーの結果を表示する
     for (let i = 0; i < gestures_results.gestures.length; i++) {
       noStroke();
-      fill(255, 255, 255);
+      noFill();
       textSize(20);
       //set the color
       if (i < randomColor.length)
@@ -140,7 +140,7 @@ function draw() {
     {
 		  synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       //synth.volume.value = ;
-      //let pitch = -pos.y/3+300;
+      let pitch = -pos.y/3+300;
       //synth.triggerAttackRelease(pitch, "1n");
     }
       
