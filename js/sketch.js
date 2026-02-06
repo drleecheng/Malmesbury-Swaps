@@ -117,7 +117,7 @@ function draw() {
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text("", pos.x, pos.y);
+      text(str(pos.y), pos.x, pos.y);
 
     //point colors
     if (gestures_results.landmarks) {
