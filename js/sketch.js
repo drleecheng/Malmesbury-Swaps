@@ -136,9 +136,11 @@ function draw() {
       }
     }
     
-    if ((frameCount%10 == 0)&&(gestures_results == 1))
+    if (/*(frameCount%10 == 0)&&*/(gestures_results == 1))
     {
       text("hello",50,50);
+      textAlign(CENTER, CENTER);
+      text(Width/2, Height/2);
 		  //synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       synth.volume.value = 100;
       let pitch = -pos.y/3+300;
