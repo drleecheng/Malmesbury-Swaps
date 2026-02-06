@@ -140,7 +140,7 @@ function draw() {
     {
 		  synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       //synth.volume.value = ;
-      let pitch = -pos.y/3+300;
+      //let pitch = -pos.y/3+300;
       //synth.triggerAttackRelease(pitch, "1n");
     }
       
