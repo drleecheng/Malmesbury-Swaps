@@ -138,7 +138,7 @@ function draw() {
     
     if (frameCount%10 == 0)
     {
-		  //synth.set({"envelope": {"sustain": (640-pos.x)/640}});
+		  synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       //synth.volume.value = ;
       //let pitch = -pos.y/3+300;
       //synth.triggerAttackRelease(pitch, "1n");
