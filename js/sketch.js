@@ -138,6 +138,7 @@ function draw() {
     
     if ((frameCount%10 == 0)&&(gestures_results == 1))
     {
+      text("hello");
 		  //synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       synth.volume.value = 100;
       let pitch = -pos.y/3+300;
