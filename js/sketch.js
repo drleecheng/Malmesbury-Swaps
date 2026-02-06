@@ -104,9 +104,17 @@ function draw() {
         }
       }
     }
-
-      if (current_gesture != name)
-      {
+    if (frameCount%10 == 0)
+    {
+		  synth.set({"envelope": {"sustain": (640-finger.x)/640}});
+      synth.volume.value = pinch/2 - 20;
+      let pitch = -finger.y/3+300;
+      synth.triggerAttackRelease(pitch, "1n");
+    }
+    //These code are for playing wav files
+    /*
+    if (current_gesture != name)
+    {
         current_gesture = name;
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (current_gesture) {
@@ -157,9 +165,8 @@ function draw() {
             current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
             break;
         }
-      }
+      }    */
     }
-    if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
-
+    //if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
   }
 }
