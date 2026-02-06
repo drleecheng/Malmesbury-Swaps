@@ -135,6 +135,7 @@ function draw() {
         }
       }
     }
+    /*
     if (frameCount%10 == 0)
     {
 		  synth.set({"envelope": {"sustain": (640-finger.x)/640}});
@@ -142,6 +143,7 @@ function draw() {
       let pitch = -finger.y/3+300;
       synth.triggerAttackRelease(pitch, "1n");
     }
+      */
     //These code are for playing wav files
     /*
     if (current_gesture != name)
