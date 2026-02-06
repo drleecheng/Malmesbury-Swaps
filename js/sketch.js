@@ -138,10 +138,10 @@ function draw() {
     
     if ((frameCount%10 == 0)&&(gestures_results == 1))
     {
-		  synth.set({"envelope": {"sustain": (640-pos.x)/640}});
+		  //synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       //synth.volume.value = 1;
       let pitch = -pos.y/3+300;
-      synth.triggerAttackRelease(pitch, "1n");
+      synth.triggerAttackRelease("C4"/*pitch*/, "1n");
     }
       
     //These code are for playing wav files
