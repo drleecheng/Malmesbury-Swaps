@@ -117,7 +117,7 @@ function draw() {
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(str(gestures_results), pos.x, pos.y);
+      text(str(pos.y), pos.x, pos.y);
 
     //point colors
     if (gestures_results.landmarks) {
@@ -136,7 +136,7 @@ function draw() {
       }
     }
     
-    if (frameCount%10 == 0)
+    if ((frameCount%10 == 0)&&(gestures_results.length == 1))
     {
       text("hello",50,50);
       textAlign(CENTER, CENTER);
