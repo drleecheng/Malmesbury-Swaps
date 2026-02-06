@@ -138,13 +138,10 @@ function draw() {
     
     if ((frameCount%10 == 0)&&(gestures_results.gestures.length == 1))
     {
-      text("hello",50,50);
-      textAlign(CENTER, CENTER);
-      text(Width/2, Height/2);
 		  //synth.set({"envelope": {"sustain": (640-pos.x)/640}});
       synth.volume.value = 100;
       let pitch = -pos.y/3+300;
-      synth.triggerAttackRelease("C4", "1n");
+      //synth.triggerAttackRelease("C4", "1n");
     }
       
     //These code are for playing wav files
