@@ -75,7 +75,7 @@ function draw()
       let name = gestures_results.gestures[i][0].categoryName;
       //let score = gestures_results.gestures[i][0].score;
       let tempHand = gestures_results.handednesses[i][0].displayName;
-      let right_or_left = tempHand === "Left" ? "Right" : "Left";
+      let right_or_left = tempHand === "Left" ? "Right" : "Right";
       pos = {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
@@ -113,9 +113,14 @@ function draw()
       if (currentHeightLevel != floor(10-(pos.y-50)/(height/11)))
       {
         currentHeightLevel = floor(10-(pos.y-50)/(height/11));
-        //determine left hand or right hand, then whether to cutoff the previous wav
-        //if   (current == instruments["violin"])
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+        //determine left hand or right hand, then whether to cutoff the previous wav
+        if (right_or_left == "Right")
+        {
+          current = instruments["violin"];
+        } 
+        else 
+          current = instruments["flute"];
         switch (currentHeightLevel) 
         {
           case 0:
