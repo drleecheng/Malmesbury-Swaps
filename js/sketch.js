@@ -108,54 +108,43 @@ function draw()
         }
       }
       
-
       if (currentHeightLevel != floor(pos.y/(height/8)))
       {
         currentHeightLevel = floor(pos.y/(height/8));
-        text("hello", windowWidth/2, windowHeight/2);
+        text("hello", width/2, height/2);
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
         {
           case 0:
-            if (pos.y > height*2/3) {current_note = 60;}
-            else if (pos.y < height/3) {current_note = 84;}
-            else {current_note = 72;}
+            current_note = 72;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 1:
-            if (pos.y > height*2/3) {current_note = 62;}
-            else if (pos.y < height/3) {current_note = 86;}
-            else {current_note = 74;}
+            current_note = 74;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 2:
-            if (pos.y > height*2/3) {current_note = 64;}
-            else if (pos.y < height/3) {current_note = 88;}
-            else {current_note = 76;}
+            current_note = 76;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 3:
-            if (pos.y > height*2/3) {current_note = 65;}
-            else if (pos.y < height/3) {current_note = 89;}
-            else {current_note = 77;}
+            current_note = 77;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 4:
-            if (pos.y > height*2/3) {current_note = 67;}
-            else if (pos.y < height/3) {current_note = 91;}
-            else {current_note = 79;}
+            current_note = 79;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 5:
-            if (pos.y > height*2/3) {current_note = 69;}
-            else if (pos.y < height/3) {current_note = 93;}
-            else {current_note = 81;}
+            current_note = 81;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 6:
-          if (pos.y > height*2/3) {current_note = 71;}
-            else if (pos.y < height/3) {current_note = 95;}
-            else {current_note = 83;}
+            current_note = 83;
+            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+            break;
+          case 7:
+            current_note = 84;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           default:
