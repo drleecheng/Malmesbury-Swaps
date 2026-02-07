@@ -90,7 +90,7 @@ function draw()
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      //text(gestures_results.handednesses[i][0].hand, pos.x, pos.y);
+      text(right_or_left, pos.x, pos.y);
       text(pos.y, pos.x, pos.y+20);
 
       //point colors
