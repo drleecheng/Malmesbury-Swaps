@@ -5,7 +5,7 @@ var randomColor = [];
 var thisColor;
 var current;
 var instruments;
-//var current_note = 0;
+var current_note = 0;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
 var current_gesture = "nothing";
