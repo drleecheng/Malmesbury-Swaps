@@ -199,11 +199,11 @@ function draw()
       }    
 
     }
-    if (isRightHandTriggered) 
+    if (!isRightHandTriggered) 
     {
       currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
     }
-    if (isLeftHandTriggered) 
+    if (!isLeftHandTriggered) 
     {
       currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
     }
