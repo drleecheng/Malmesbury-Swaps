@@ -74,7 +74,7 @@ function draw()
       }
       let name = gestures_results.gestures[i][0].categoryName;
       //let score = gestures_results.gestures[i][0].score;
-      //let right_or_left = gestures_results.handednesses[i][0].hand;
+      let right_or_left = gestures_results.handednesses[i][0].hand;
       pos = {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
@@ -89,7 +89,7 @@ function draw()
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(floor(10-(pos.y-50)/(height/11)), pos.x, pos.y);
+      text(str(gestures_results.handednesses[i][0].hand), pos.x, pos.y);
       text(pos.y, pos.x, pos.y+20);
 
       //point colors
@@ -112,7 +112,9 @@ function draw()
       if (currentHeightLevel != floor(10-(pos.y-50)/(height/11)))
       {
         currentHeightLevel = floor(10-(pos.y-50)/(height/11));
-        //current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+        //determine left hand or right hand, then whether to cutoff the previous wav
+        //if   (current == instruments["violin"])
+          current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
         {
           case 0:
