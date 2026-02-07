@@ -89,7 +89,7 @@ function draw()
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(str(gestures_results.gestures.length), pos.x, pos.y);
+      text(pos.y/(height/8), pos.x, pos.y);
 
       //point colors
       if (gestures_results.landmarks) {
@@ -107,7 +107,7 @@ function draw()
           }
         }
       }
-    
+      
       if (currentHeightLevel != pos.y/(height/8))
       {
         currentHeightLevel = pos.y/(height/8);
@@ -115,7 +115,6 @@ function draw()
         switch (currentHeightLevel) 
         {
           case 0:
-            console.log(pos.y);
             if (pos.y > height*2/3) {current_note = 60;}
             else if (pos.y < height/3) {current_note = 84;}
             else {current_note = 72;}
