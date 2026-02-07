@@ -108,42 +108,41 @@ function draw()
         }
       }
       
-      if (currentHeightLevel != floor(pos.y/(height/8)))
+      if (currentHeightLevel != floor(10-pos.y/(height/8)))
       {
-        currentHeightLevel = floor(pos.y/(height/8));
-        text("hello", width/2, height/2);
+        currentHeightLevel = floor(10-pos.y/(height/8));
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
         {
-          case 0:
+          case 1:
             current_note = 72;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 1:
+          case 2:
             current_note = 74;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 2:
+          case 3:
             current_note = 76;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 3:
+          case 4:
             current_note = 77;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 4:
+          case 5:
             current_note = 79;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 5:
+          case 6:
             current_note = 81;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 6:
+          case 7:
             current_note = 83;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case 7:
+          case 8:
             current_note = 84;
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
