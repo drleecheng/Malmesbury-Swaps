@@ -13,6 +13,8 @@ var currentRightHandLevel = 0;
 var currentLeftHandLevel = 0;
 var posLeftHand = {x:0,y:0};
 var posRightHand = {x:0,y:0};
+var isLeftHandTriggered = false;
+var isRightHandTriggered = false;
 
 function setup() {
   randomColor.push(color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
@@ -79,7 +81,6 @@ function draw()
         thisColor = randomColor[i%randomColor.length];
       }
       let name = gestures_results.gestures[i][0].categoryName;
-      //let score = gestures_results.gestures[i][0].score;
       let tempHand = gestures_results.handednesses[i][0].displayName;
       let right_or_left = tempHand === "Left" ? "Left" : "Right";
       if (right_or_left == "Left")
@@ -98,6 +99,10 @@ function draw()
         case "Pointing_Up": 
           fill(thisColor);
           stroke(255);
+           if (right_or_left == "Left")
+            isLeftHandTriggered = true;
+            else
+            isRightHandTriggered = true;
           break;
       }
 
@@ -117,11 +122,11 @@ function draw()
           }
         textSize(48);
         textAlign(CENTER, CENTER);
-        text(str(landmarks[8].y-landmarks[0].y), posRightHand.x, posRightHand.y);
+        text(str(landmarks[0].y-landmarks[8].y), posRightHand.x, posRightHand.y); // range around 0.1-0.5
         }
       }
       
-      if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
+      if (isRightHandTriggered && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
         currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
@@ -157,7 +162,7 @@ function draw()
         currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
 
-      if (currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
+      if (isLeftHandTriggered && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
       {
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
         currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
@@ -201,4 +206,6 @@ function draw()
 
     }
   }
+  isRightHandTriggered = false;
+  isLeftHandTriggered = false;
 }
