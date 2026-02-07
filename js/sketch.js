@@ -117,7 +117,7 @@ function draw()
           }
         textSize(48);
         textAlign(CENTER, CENTER);
-        text(str(dist(landmarks[8].y-landmarks[0].y)), posRightHand.x, posRightHand.y);
+        text(str(landmarks[8].y-landmarks[0].y), posRightHand.x, posRightHand.y);
         }
       }
       
