@@ -7,6 +7,7 @@ var current;
 var instruments;
 var current_note = 0;
 var current_gesture = "nothing";
+var currentHeightLevel = 0;
 var pos = {x:0,y:0};
 
 function setup() {
@@ -45,7 +46,8 @@ function startWebcam() {
   
 }
 
-function draw() {
+function draw() 
+{
   background(128);
   if (cam) {
     image(cam, 0, 0, width, height);
@@ -56,7 +58,8 @@ function draw() {
   if (gestures_results) {
 
     // ジェスチャーの結果を表示する
-    for (let i = 0; i < gestures_results.gestures.length; i++) {
+    for (let i = 0; i < gestures_results.gestures.length; i++) 
+    {
       noStroke();
       noFill();
       textSize(20);
@@ -88,78 +91,78 @@ function draw() {
       textAlign(CENTER, CENTER);
       text(str(gestures_results.gestures.length), pos.x, pos.y);
 
-    //point colors
-    if (gestures_results.landmarks) {
-      for (const landmarks of gestures_results.landmarks) {
-        for (let landmark of landmarks) {
-          stroke(255);
-          strokeWeight(2);
-          switch (name)
-          {
-            case "Pointing_Up": 
-              fill(thisColor);
-              break;
+      //point colors
+      if (gestures_results.landmarks) {
+        for (const landmarks of gestures_results.landmarks) {
+          for (let landmark of landmarks) {
+            stroke(255);
+            strokeWeight(2);
+            switch (name)
+            {
+                case "Pointing_Up": 
+                fill(thisColor);
+                break;
+            }
+            circle(landmark.x * width, landmark.y * height, 10);
           }
-          circle(landmark.x * width, landmark.y * height, 10);
         }
       }
-    }
     
-    
-    if (current_gesture != name)
-    {
-        current_gesture = name;
+      if (currentHeightLevel != pos.y/(height/8))
+      {
+        currentHeightLevel = pos.y/(height/8);
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
-        switch (current_gesture) {
-          case "Pointing_Up":
+        switch (currentHeightLevel) 
+        {
+          case 0:
             console.log(pos.y);
             if (pos.y > height*2/3) {current_note = 60;}
             else if (pos.y < height/3) {current_note = 84;}
             else {current_note = 72;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case "Re":
+          case 1:
             if (pos.y > height*2/3) {current_note = 62;}
             else if (pos.y < height/3) {current_note = 86;}
             else {current_note = 74;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case "Mi":
+          case 2:
             if (pos.y > height*2/3) {current_note = 64;}
             else if (pos.y < height/3) {current_note = 88;}
             else {current_note = 76;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case "Fa":
+          case 3:
             if (pos.y > height*2/3) {current_note = 65;}
             else if (pos.y < height/3) {current_note = 89;}
             else {current_note = 77;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case "So":
+          case 4:
             if (pos.y > height*2/3) {current_note = 67;}
             else if (pos.y < height/3) {current_note = 91;}
             else {current_note = 79;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case "La":
+          case 5:
             if (pos.y > height*2/3) {current_note = 69;}
             else if (pos.y < height/3) {current_note = 93;}
             else {current_note = 81;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-          case "Ti":
-            if (pos.y > height*2/3) {current_note = 71;}
+          case 6:
+          if (pos.y > height*2/3) {current_note = 71;}
             else if (pos.y < height/3) {current_note = 95;}
             else {current_note = 83;}
             current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
-         default:
+          default:
             current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
             break;
         }
       }    
     }
-    //if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+    if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
   }
 }
