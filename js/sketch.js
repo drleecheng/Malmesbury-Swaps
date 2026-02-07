@@ -8,37 +8,6 @@ var instruments;
 var current_note = 0;
 var current_gesture = "nothing";
 var pos = {x:0,y:0};
-const synth = new Tone.MonoSynth({
-	"volume": -8,
-	"detune": 0,
-	"portamento": 0,
-	"envelope": {
-		"attack": 0.05,
-		"attackCurve": "linear",
-		"decay": 0.3,
-		"decayCurve": "exponential",
-		"release": 0.8,
-		"releaseCurve": "exponential",
-		"sustain": 1
-	},
-	"oscillator": {
-		"detune": 0,
-		"frequency": 440,
-		"partialCount": 8,
-		"partials": [
-			1.2732395447351628,
-			0,
-			0.4244131815783876,
-			0,
-			0.25464790894703254,
-			0,
-			0.18189136353359467,
-			0
-		],
-		"phase": 0,
-		"type": "square8"
-	}
-}).toDestination();
 
 function setup() {
   randomColor.push(color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
@@ -136,22 +105,13 @@ function draw() {
       }
     }
     
-    if ((frameCount%10 == 0)&&(gestures_results.gestures.length == 1))
-    {
-		  synth.set({"envelope": {"sustain": (640-pos.x)/640}});
-      synth.volume.value = 100;
-      let pitch = -pos.y/3+300;
-      synth.triggerAttackRelease(pitch, "8n");
-    }
-      
-    //These code are for playing wav files
-    /*
+    
     if (current_gesture != name)
     {
         current_gesture = name;
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (current_gesture) {
-          case "Do":
+          case "Pointing_Up":
             console.log(pos.y);
             if (pos.y > height*2/3) {current_note = 60;}
             else if (pos.y < height/3) {current_note = 84;}
@@ -198,7 +158,7 @@ function draw() {
             current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
             break;
         }
-      }    */
+      }    
     }
     //if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
   }
