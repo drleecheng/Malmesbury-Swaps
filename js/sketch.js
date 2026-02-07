@@ -28,6 +28,10 @@ function setup() {
     instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
   });
 
+  function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
   Tone.Buffer.on('load', function() {
   currentRight = instruments["violin"];
   currentRight.toMaster();
