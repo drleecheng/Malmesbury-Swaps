@@ -6,14 +6,11 @@ var thisColor;
 var currentRight;
 var currentLeft;
 var instruments;
-var current_note = 0;//
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
 var current_gesture = "nothing";
-var currentHeightLevel = 0;//
 var currentRightHandLevel = 0;
 var currentLeftHandLevel = 0;
-var pos = {x:0,y:0};//
 var posLeftHand = {x:0,y:0};
 var posRightHand = {x:0,y:0};
 
@@ -120,7 +117,7 @@ function draw()
           }
         textSize(48);
         textAlign(CENTER, CENTER);
-        text(str(dist(landmarks[0], landmarks[8])), pos.x, pos.y);
+        text(str(dist(landmarks[8].y-landmarks[0].y)), posRightHand.x, posRightHand.y);
         }
       }
       
