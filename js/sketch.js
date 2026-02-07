@@ -5,7 +5,9 @@ var randomColor = [];
 var thisColor;
 var current;
 var instruments;
-var current_note = 0;
+//var current_note = 0;
+var currentLeftHandNote = 0;
+var currentRightHandNote = 0;
 var current_gesture = "nothing";
 var currentHeightLevel = 0;
 var pos = {x:0,y:0};
@@ -75,7 +77,7 @@ function draw()
       let name = gestures_results.gestures[i][0].categoryName;
       //let score = gestures_results.gestures[i][0].score;
       let tempHand = gestures_results.handednesses[i][0].displayName;
-      let right_or_left = tempHand === "Left" ? "Right" : "Right";
+      let right_or_left = tempHand === "Left" ? "Left" : "Right";
       pos = {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
@@ -125,40 +127,33 @@ function draw()
         {
           case 0:
             current_note = 72;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 1:
             current_note = 74;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 2:
             current_note = 76;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 3:
             current_note = 77;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 4:
             current_note = 79;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 5:
             current_note = 81;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 6:
             current_note = 83;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           case 7:
             current_note = 84;
-            current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
             break;
           default:
             current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
             break;
         }
+        current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
       }    
     }
     if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
