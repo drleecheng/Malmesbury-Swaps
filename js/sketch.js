@@ -9,7 +9,9 @@ var current_note = 0;//
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
 var current_gesture = "nothing";
-var currentHeightLevel = 0;
+var currentHeightLevel = 0;//
+var currentRightHandLevel = 0;
+var currentLeftHandLevel = 0;
 var pos = {x:0,y:0};//
 var posLeftHand = {x:0,y:0};
 var posRightHand = {x:0,y:0};
@@ -120,45 +122,46 @@ function draw()
         }
       }
       
-      if (currentHeightLevel != floor(10-(posRightHand.y-50)/(height/11)))
+      if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
-        currentHeightLevel = floor(10-(posRightHand.y-50)/(height/11));
-        current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+        currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
+        current.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
         //determine left hand or right hand, then whether to cutoff the previous wav
           //current = instruments["violin"];
           //current = instruments["flute"];
-        switch (currentHeightLevel) 
+        switch (currentRightHandLevel) 
         {
           case 0:
-            current_note = 72;
+            currentRightHandNote = 72;
             break;
           case 1:
-            current_note = 74;
+            currentRightHandNote = 74;
             break;
           case 2:
-            current_note = 76;
+            currentRightHandNote = 76;
             break;
           case 3:
-            current_note = 77;
+            currentRightHandNote = 77;
             break;
           case 4:
-            current_note = 79;
+            currentRightHandNote = 79;
             break;
           case 5:
-            current_note = 81;
+            currentRightHandNote = 81;
             break;
           case 6:
-            current_note = 83;
+            currentRightHandNote = 83;
             break;
           case 7:
-            current_note = 84;
+            currentRightHandNote = 84;
             break;
           default:
             break;
         }
-        current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
+        current.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
     }
-    if ((gestures_results.gestures.length == 0) && (current)) current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+    if ((gestures_results.gestures.length == 0) && (current)) 
+      current.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
   }
 }
