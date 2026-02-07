@@ -160,8 +160,52 @@ function draw()
         }
         current.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
+
+      if (currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
+      {
+        currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
+        current.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+        //determine left hand or right hand, then whether to cutoff the previous wav
+          //current = instruments["violin"];
+          //current = instruments["flute"];
+        switch (currentLeftHandLevel) 
+        {
+          case 0:
+            currentLeftHandNote = 72;
+            break;
+          case 1:
+            currentLeftHandNote = 74;
+            break;
+          case 2:
+            currentLeftHandNote = 76;
+            break;
+          case 3:
+            currentLeftHandNote = 77;
+            break;
+          case 4:
+            currentLeftHandNote = 79;
+            break;
+          case 5:
+            currentLeftHandNote = 81;
+            break;
+          case 6:
+            currentLeftHandNote = 83;
+            break;
+          case 7:
+            currentLeftHandNote = 84;
+            break;
+          default:
+            break;
+        }
+        current.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+      }    
+
     }
     if ((gestures_results.gestures.length == 0) && (current)) 
+    {
+      current.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
       current.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+
+    }
   }
 }
