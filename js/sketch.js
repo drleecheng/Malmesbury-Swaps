@@ -103,10 +103,6 @@ function draw()
           stroke(255);
           break;
       }
-      textSize(48);
-      textAlign(CENTER, CENTER);
-     // text(right_or_left, pos.x, pos.y);
-     // text(pos.y, pos.x, pos.y+20);
 
       //point colors
       if (gestures_results.landmarks) {
@@ -122,6 +118,9 @@ function draw()
             }
             circle(landmark.x * width, landmark.y * height, 10);
           }
+        textSize(48);
+        textAlign(CENTER, CENTER);
+        text(str(dist(landmarks[0], landmarks[8])), pos.x, pos.y);
         }
       }
       
@@ -129,9 +128,6 @@ function draw()
       {
         currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-        //determine left hand or right hand, then whether to cutoff the previous wav
-          //current = instruments["violin"];
-          //current = instruments["flute"];
         switch (currentRightHandLevel) 
         {
           case 0:
@@ -168,9 +164,6 @@ function draw()
       {
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
         currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-        //determine left hand or right hand, then whether to cutoff the previous wav
-          //current = instruments["violin"];
-          //current = instruments["flute"];
         switch (currentLeftHandLevel) 
         {
           case 0:
