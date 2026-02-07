@@ -108,9 +108,9 @@ function draw()
         }
       }
       
-      text("hello1", windowWidth/2, windowHeight/2);
-      text(str(currentHeightLevel), windowWidth/2, windowHeight/3);
-      text(str(floor(pos.y/(height/8))), windowWidth/2, windowHeight/4);
+      text("hello1", width/2, height/2);
+      text(str(currentHeightLevel), width/2, height/3);
+      text(str(floor(pos.y/(height/8))), width/2, height/4);
 
 
       if (currentHeightLevel != floor(pos.y/(height/8)))
