@@ -199,11 +199,13 @@ function draw()
       }    
 
     }
-    if ((gestures_results.gestures.length == 0) && ((currentLeft)||(currentRight))) 
+    if (isRightHandTriggered) 
+    {
+      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+    }
+    if (isLeftHandTriggered) 
     {
       currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-
     }
   }
   isRightHandTriggered = false;
