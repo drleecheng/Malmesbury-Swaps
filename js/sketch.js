@@ -3,7 +3,8 @@ let cam = null;
 let p5canvas = null;
 var randomColor = [];
 var thisColor;
-var current;
+var currentRight;
+var currentLeft;
 var instruments;
 var current_note = 0;//
 var currentLeftHandNote = 0;
@@ -29,8 +30,10 @@ function setup() {
   });
 
   Tone.Buffer.on('load', function() {
-  current = instruments["violin"];
-  current.toMaster();
+  currentRight = instruments["violin"];
+  currentRight.toMaster();
+  currentLeft = instruments["flute"];
+  currentLeft.toMaster();
   });
 }
 
@@ -158,13 +161,13 @@ function draw()
           default:
             break;
         }
-        current.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
+        currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
 
       if (currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
       {
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
-        current.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+        currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
         //determine left hand or right hand, then whether to cutoff the previous wav
           //current = instruments["violin"];
           //current = instruments["flute"];
@@ -197,11 +200,11 @@ function draw()
           default:
             break;
         }
-        current.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+        currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
       }    
 
     }
-    if ((gestures_results.gestures.length == 0) && (current)) 
+    if ((gestures_results.gestures.length == 0) && ((currentLeft)||(currentRight))) 
     {
       current.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
       current.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
