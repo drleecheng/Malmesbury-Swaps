@@ -5,12 +5,14 @@ var randomColor = [];
 var thisColor;
 var current;
 var instruments;
-var current_note = 0;
+var current_note = 0;//
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
 var current_gesture = "nothing";
 var currentHeightLevel = 0;
-var pos = {x:0,y:0};
+var pos = {x:0,y:0};//
+var posLeftHand = {x:0,y:0};
+var posRightHand = {x:0,y:0};
 
 function setup() {
   randomColor.push(color(255,255,255), color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
@@ -78,10 +80,16 @@ function draw()
       //let score = gestures_results.gestures[i][0].score;
       let tempHand = gestures_results.handednesses[i][0].displayName;
       let right_or_left = tempHand === "Left" ? "Left" : "Right";
-      pos = {
-        x: gestures_results.landmarks[i][0].x * width,
-        y: gestures_results.landmarks[i][0].y * height,
-      };
+      if (right_or_left == "Left")
+        posLeftHand = {
+          x: gestures_results.landmarks[i][0].x * width,
+          y: gestures_results.landmarks[i][0].y * height,
+        };
+      else 
+          posRightHand = {
+          x: gestures_results.landmarks[i][0].x * width,
+          y: gestures_results.landmarks[i][0].y * height,
+        };
       //text overlay and coloring
       switch (name)
       {
@@ -92,8 +100,8 @@ function draw()
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(right_or_left, pos.x, pos.y);
-      text(pos.y, pos.x, pos.y+20);
+     // text(right_or_left, pos.x, pos.y);
+     // text(pos.y, pos.x, pos.y+20);
 
       //point colors
       if (gestures_results.landmarks) {
@@ -112,17 +120,13 @@ function draw()
         }
       }
       
-      if (currentHeightLevel != floor(10-(pos.y-50)/(height/11)))
+      if (currentHeightLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
-        currentHeightLevel = floor(10-(pos.y-50)/(height/11));
+        currentHeightLevel = floor(10-(posRightHand.y-50)/(height/11));
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         //determine left hand or right hand, then whether to cutoff the previous wav
-        if (right_or_left == "Right")
-        {
-          current = instruments["violin"];
-        } 
-        else 
-          current = instruments["flute"];
+          //current = instruments["violin"];
+          //current = instruments["flute"];
         switch (currentHeightLevel) 
         {
           case 0:
@@ -150,7 +154,6 @@ function draw()
             current_note = 84;
             break;
           default:
-            current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
             break;
         }
         current.triggerAttack(Tone.Frequency(current_note, "midi").toNote());
