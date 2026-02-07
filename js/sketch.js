@@ -74,7 +74,8 @@ function draw()
       }
       let name = gestures_results.gestures[i][0].categoryName;
       //let score = gestures_results.gestures[i][0].score;
-      let right_or_left = gestures_results.handednesses[i][0].hand;
+      let tempHand = gestures_results.handednesses[i][0].displayName;
+      let right_or_left = tempHand === "Left" ? "Right" : "Left";
       pos = {
         x: gestures_results.landmarks[i][0].x * width,
         y: gestures_results.landmarks[i][0].y * height,
