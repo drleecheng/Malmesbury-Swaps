@@ -18,7 +18,7 @@ function setup() {
     gestures_results = results;
   }
   instruments = SampleLibrary.load({
-    instruments: ["violin"/*,"flute"*/], ext: ".wav", baseUrl: "samples/"
+    instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
   });
 
   Tone.Buffer.on('load', function() {
