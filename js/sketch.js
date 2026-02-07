@@ -112,7 +112,7 @@ function draw()
       if (currentHeightLevel != floor(10-(pos.y-50)/(height/11)))
       {
         currentHeightLevel = floor(10-(pos.y-50)/(height/11));
-        current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+        //current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
         {
           case 0:
