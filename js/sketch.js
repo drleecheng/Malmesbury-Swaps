@@ -128,7 +128,7 @@ function draw()
       if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
         currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
-        current.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+        currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
         //determine left hand or right hand, then whether to cutoff the previous wav
           //current = instruments["violin"];
           //current = instruments["flute"];
@@ -206,8 +206,8 @@ function draw()
     }
     if ((gestures_results.gestures.length == 0) && ((currentLeft)||(currentRight))) 
     {
-      current.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-      current.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+      currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
 
     }
   }
