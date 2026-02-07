@@ -108,14 +108,10 @@ function draw()
         }
       }
       
-      text("hello1", width/2, height/2);
-      text(str(currentHeightLevel), width/2, height/3);
-      text(str(floor(pos.y/(height/8))), width/2, height/4);
-
 
       if (currentHeightLevel != floor(pos.y/(height/8)))
       {
-        currentHeightLevel = pos.y/(height/8);
+        currentHeightLevel = floor(pos.y/(height/8));
         text("hello", windowWidth/2, windowHeight/2);
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
