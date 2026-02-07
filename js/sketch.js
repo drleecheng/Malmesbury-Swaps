@@ -89,7 +89,7 @@ function draw()
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(str(gestures_results.handednesses[i][0].hand), pos.x, pos.y);
+      //text(gestures_results.handednesses[i][0].hand, pos.x, pos.y);
       text(pos.y, pos.x, pos.y+20);
 
       //point colors
@@ -114,7 +114,7 @@ function draw()
         currentHeightLevel = floor(10-(pos.y-50)/(height/11));
         //determine left hand or right hand, then whether to cutoff the previous wav
         //if   (current == instruments["violin"])
-          current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
+        current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
         {
           case 0:
