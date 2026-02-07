@@ -18,7 +18,7 @@ var isRightHandTriggered = false;
 
 function setup() {
   randomColor.push(color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
-  p5canvas = createCanvas(640, 480);
+  p5canvas = createCanvas(windowWidth, windowHeight);
   p5canvas.parent('#canvas');
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
