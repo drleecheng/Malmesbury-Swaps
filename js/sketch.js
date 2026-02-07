@@ -111,7 +111,7 @@ function draw()
       if (currentHeightLevel != floor(pos.y/(height/8)))
       {
         currentHeightLevel = pos.y/(height/8);
-        text("hello", Width/2, Height/2);
+        text("hello", windowWidth/2, windowHeight/2);
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
         switch (currentHeightLevel) 
         {
