@@ -89,7 +89,7 @@ function draw()
       }
       textSize(48);
       textAlign(CENTER, CENTER);
-      text(pos.y/(height/8), pos.x, pos.y);
+      text(floor(pos.y/(height/10)), pos.x, pos.y);
 
       //point colors
       if (gestures_results.landmarks) {
@@ -108,7 +108,7 @@ function draw()
         }
       }
       
-      if (currentHeightLevel != pos.y/(height/8))
+      if (currentHeightLevel != floor(pos.y/(height/8)))
       {
         currentHeightLevel = pos.y/(height/8);
         current.triggerRelease(Tone.Frequency(current_note, "midi").toNote());
