@@ -8,8 +8,8 @@
 
 <body>
 
-  <h1 style="text-align: center;">Malmesbury Swaps</h1>
-  <div style="text-align: center;">
+  <div id="heading" style="text-align: center;">
+    <h1 style="text-align: center;">Malmesbury Swaps</h1>
     <button id="button_webcam" disabled onclick="displayCamera(); this.style.display='none'; startWebcam();" style="display: inline-block; max-width: 640px; border: none; background-color: #04AA6D; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer; text-align: center;">
       Model Loading...
     </button>
@@ -55,6 +55,7 @@
   <script>
   function displayCamera() {
     document.getElementById("slides").style.display = "none";
+    document.getElementById("heading").style.display = "none";
     document.getElementById("canvas").style.display = "block";
   }
   </script>
