@@ -122,7 +122,7 @@ function draw()
           }
         textSize(48);
         textAlign(CENTER, CENTER);
-        text(str(landmarks[0].y-landmarks[8].y), posRightHand.x, posRightHand.y); // range around 0.1-0.5
+        //text(str(landmarks[0].y-landmarks[8].y), posRightHand.x, posRightHand.y); // range around 0.1-0.5
         }
       }
       
@@ -197,7 +197,7 @@ function draw()
         }
         currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
       }    
-
+    
     }
     if (!isRightHandTriggered) 
     {
