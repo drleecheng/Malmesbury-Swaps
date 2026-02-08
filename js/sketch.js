@@ -18,8 +18,11 @@ var isRightHandTriggered = false;
 
 function setup() {
   randomColor.push(color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
-  let aspectRatio = 16 / 9;
-  p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
+  let aspectRatio = 4 / 3;
+  if (windowHeight > windowWidth)
+    p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
+  else
+    p5canvas = createCanvas(windowWidth, windowWidth / aspectRatio);
   p5canvas.parent('#canvas');
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
@@ -30,7 +33,7 @@ function setup() {
   });
 
   function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowHeight * aspectRatio, windowHeight);
   }
 
   Tone.Buffer.on('load', function() {
