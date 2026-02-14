@@ -29,11 +29,15 @@ function setup() {
     gestures_results = results;
   }
   instruments = SampleLibrary.load({
-    instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
+    instruments: ["violin","flute", "Piano"], ext: ".wav", baseUrl: "samples/"
   });
 
   function windowResized() {
+      let aspectRatio = 4 / 3;
+  if (windowWidth > windowHeight)
     resizeCanvas(windowHeight * aspectRatio, windowHeight);
+  else
+    resizeCanvas(windowWidth, windowWidth * aspectRatio);
   }
 
   Tone.Buffer.on('load', function() {
@@ -106,7 +110,13 @@ function draw()
       {
         case "Pointing_Up": 
           fill(thisColor);
-          stroke(255);
+           if (right_or_left == "Left")
+            isLeftHandTriggered = true;
+            else
+            isRightHandTriggered = true;
+          break;
+        case "Closed_Fist": 
+          fill(thisColor);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
             else
@@ -123,8 +133,9 @@ function draw()
             switch (name)
             {
                 case "Pointing_Up": 
-                fill(thisColor);
-                break;
+                case "Closed_Fist":
+                  fill(thisColor);
+                  break;
             }
             circle(landmark.x * width, landmark.y * height, 10);
           }
@@ -134,7 +145,7 @@ function draw()
         }
       }
       
-      if (isRightHandTriggered && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
+      if (isRightHandTriggere && (name == "Pointing_Up") && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
         currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
@@ -170,7 +181,7 @@ function draw()
         currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
 
-      if (isLeftHandTriggered && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
+      if (isLeftHandTriggered && (name == "Pointing_Up") && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
       {
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
         currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
