@@ -5,7 +5,6 @@ var randomColor = [];
 var thisColor;
 var currentRight;
 var currentLeft;
-var piano;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
@@ -16,6 +15,9 @@ var posLeftHand = {x:0,y:0};
 var posRightHand = {x:0,y:0};
 var isLeftHandTriggered = false;
 var isRightHandTriggered = false;
+var pianoC;
+var pianoE;
+var pianoG;
 
 function setup() {
   randomColor.push(color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
@@ -30,7 +32,7 @@ function setup() {
     gestures_results = results;
   }
   instruments = SampleLibrary.load({
-    instruments: ["violin","flute", "piano"], ext: ".wav", baseUrl: "samples/"
+    instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
   });
 
   function windowResized() {
@@ -46,9 +48,10 @@ function setup() {
   currentRight.toMaster();
   currentLeft = instruments["flute"];
   currentLeft.toMaster();
-  piano = instruments["piano"];
-  piano.toMaster();
   });
+  pianoC = new Tone.Player("samples/piano/C3.wav").toDestination();
+  pianoE = new Tone.Player("samples/piano/CE.wav").toDestination();
+  pianoG = new Tone.Player("samples/piano/CG.wav").toDestination();
 }
 
 function windowResized() {
@@ -229,9 +232,9 @@ function draw()
             }    
         break;
         case "Closed_Fist": 
-            piano.triggerAttack(Tone.Frequency("C3"));
-            piano.triggerAttack(Tone.Frequency("E3"));
-            piano.triggerAttack(Tone.Frequency("G3"));
+            pianoC.start();
+            pianoE.start();
+            pianoG.start();
         break;
       }
     }
