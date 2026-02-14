@@ -110,6 +110,7 @@ function draw()
       {
         case "Pointing_Up": 
           fill(thisColor);
+          stroke(255);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
             else
@@ -117,6 +118,7 @@ function draw()
           break;
         case "Closed_Fist": 
           fill(thisColor);
+          stroke(255);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
             else
@@ -133,9 +135,11 @@ function draw()
             switch (name)
             {
                 case "Pointing_Up": 
-                case "Closed_Fist":
-                  fill(thisColor);
-                  break;
+                fill(thisColor);
+                break;
+                case "Closed_Fist": 
+                fill(thisColor);
+                break;
             }
             circle(landmark.x * width, landmark.y * height, 10);
           }
@@ -145,7 +149,7 @@ function draw()
         }
       }
       
-      if (isRightHandTriggere && (name == "Pointing_Up") && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
+      if (isRightHandTriggered && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
         currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
@@ -181,7 +185,7 @@ function draw()
         currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
 
-      if (isLeftHandTriggered && (name == "Pointing_Up") && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
+      if (isLeftHandTriggered && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
       {
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
         currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
