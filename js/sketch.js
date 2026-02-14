@@ -229,9 +229,9 @@ function draw()
           }    
         break;
         case "Closed_Fist": 
-            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "C3").toNote());
-            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "E3").toNote());
-            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "G3").toNote());
+            piano.triggerAttack(Tone.Frequency("C3").toNote());
+            piano.triggerAttack(Tone.Frequency("E3").toNote());
+            piano.triggerAttack(Tone.Frequency("G3").toNote());
         break;
       }
     }
