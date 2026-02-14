@@ -187,7 +187,7 @@ function draw()
 
       if (isLeftHandTriggered && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
       {
-        console.log(name);
+        //console.log(name);
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
         currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
         switch (currentLeftHandLevel) 
