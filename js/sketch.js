@@ -192,46 +192,46 @@ function draw()
               }
               currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
             }    
-          else if (isLeftHandTriggered)
-          {
-            currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
-            currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-            switch (currentLeftHandLevel) 
+            else if (isLeftHandTriggered)
             {
-              case 0:
-                currentLeftHandNote = 72;
-                break;
-              case 1:
-                currentLeftHandNote = 74;
-                break;
-              case 2:
-                currentLeftHandNote = 76;
-                break;
-              case 3:
-                currentLeftHandNote = 77;
-                break;
-              case 4:
-                currentLeftHandNote = 79;
-                break;
-              case 5:
-                currentLeftHandNote = 81;
-                break;
-              case 6:
-                currentLeftHandNote = 83;
-                break;
-              case 7:
-                currentLeftHandNote = 84;
-                break;
-              default:
-                break;
-            }
-            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-          }    
+              currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
+              currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+              switch (currentLeftHandLevel) 
+              {
+                case 0:
+                  currentLeftHandNote = 72;
+                  break;
+                case 1:
+                  currentLeftHandNote = 74;
+                  break;
+                case 2:
+                  currentLeftHandNote = 76;
+                  break;
+                case 3:
+                  currentLeftHandNote = 77;
+                  break;
+                case 4:
+                  currentLeftHandNote = 79;
+                  break;
+                case 5:
+                  currentLeftHandNote = 81;
+                  break;
+                case 6:
+                  currentLeftHandNote = 83;
+                  break;
+                case 7:
+                  currentLeftHandNote = 84;
+                  break;
+                default:
+                  break;
+              }
+              currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+            }    
         break;
         case "Closed_Fist": 
-            piano.triggerAttack(Tone.Frequency("C3").toNote());
-            piano.triggerAttack(Tone.Frequency("E3").toNote());
-            piano.triggerAttack(Tone.Frequency("G3").toNote());
+            //piano.triggerAttack(Tone.Frequency("C3").toNote());
+            //piano.triggerAttack(Tone.Frequency("E3").toNote());
+            //piano.triggerAttack(Tone.Frequency("G3").toNote());
         break;
       }
     }
