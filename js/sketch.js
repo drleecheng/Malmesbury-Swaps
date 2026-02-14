@@ -29,7 +29,7 @@ function setup() {
     gestures_results = results;
   }
   instruments = SampleLibrary.load({
-    instruments: ["violin","flute", "Piano"], ext: ".wav", baseUrl: "samples/"
+    instruments: ["violin","flute", "piano"], ext: ".wav", baseUrl: "samples/"
   });
 
   function windowResized() {
