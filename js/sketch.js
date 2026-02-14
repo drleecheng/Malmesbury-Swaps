@@ -5,6 +5,7 @@ var randomColor = [];
 var thisColor;
 var currentRight;
 var currentLeft;
+var piano;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
@@ -45,6 +46,8 @@ function setup() {
   currentRight.toMaster();
   currentLeft = instruments["flute"];
   currentLeft.toMaster();
+  piano = instruments["piano"];
+  piano.toMaster();
   });
 }
 
@@ -226,8 +229,9 @@ function draw()
           }    
         break;
         case "Closed_Fist": 
-          
-
+            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "C3").toNote());
+            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "E3").toNote());
+            currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "G3").toNote());
         break;
       }
     }
