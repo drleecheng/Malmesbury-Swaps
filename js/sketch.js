@@ -149,7 +149,7 @@ function draw()
         }
       }
       
-      if (isRightHandTriggered && (name == "Pointing_Up") && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
+      if (isRightHandTriggered && (name === "Pointing_Up") && currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
       {
         currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
@@ -185,7 +185,7 @@ function draw()
         currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
       }    
 
-      if (isLeftHandTriggered && (name == "Pointing_Up") && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
+      if (isLeftHandTriggered && (name === "Pointing_Up") && currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11)))
       {
         currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
         currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
