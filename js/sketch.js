@@ -1,7 +1,8 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-var gesturePointColor;
+var melodyColor;
+var chordColor;
 var currentRight;
 var currentLeft;
 var instruments;
@@ -45,7 +46,8 @@ function setup() {
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
   
-  gesturePointColor = color(0, 255, 0);
+  melodyColor = color(0, 255, 0);
+  chordColor = color(255, 0, 0);
 }
 
 function windowResized() {
@@ -81,7 +83,8 @@ function draw()
   // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   if (gestures_results) {
 
-    // ジェスチャーの結果を表示する
+    // determine whether it's left or right hand
+    // store the single position to posLeftHand or posRightHand
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
       noStroke();
@@ -96,7 +99,7 @@ function draw()
           y: gestures_results.landmarks[i][0].y * height,
         };
       else 
-          posRightHand = {
+        posRightHand = {
           x: gestures_results.landmarks[i][0].x * width,
           y: gestures_results.landmarks[i][0].y * height,
         };
@@ -104,7 +107,7 @@ function draw()
       switch (name)
       {
         case "Pointing_Up": 
-          fill(gesturePointColor);
+          fill(melodyColor);
           stroke(255);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
@@ -112,7 +115,7 @@ function draw()
             isRightHandTriggered = true;
           break;
         case "Closed_Fist": 
-          fill(gesturePointColor);
+          fill(chordColor);
           stroke(255);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
@@ -130,10 +133,10 @@ function draw()
             switch (name)
             {
                 case "Pointing_Up": 
-                  fill(gesturePointColor);
+                  fill(melodyColor);
                 break;
                 case "Closed_Fist": 
-                  fill(gesturePointColor);
+                  fill(chordColor);
                 break;
             }
             circle(landmark.x * width, landmark.y * height, 10);
