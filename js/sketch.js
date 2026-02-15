@@ -49,9 +49,9 @@ function setup() {
   currentLeft = instruments["flute"];
   currentLeft.toMaster();
   });
-  pianoC = new Tone.Player("samples/piano/C3.wav").toDestination();
-  pianoE = new Tone.Player("samples/piano/E3.wav").toDestination();
-  pianoG = new Tone.Player("samples/piano/G3.wav").toDestination();
+  pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
+  pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
+  pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
 }
 
 function windowResized() {
