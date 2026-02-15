@@ -179,6 +179,14 @@ function draw()
           previousRightHandGesture = "Pointing_Up";
         } 
         break;
+      case "Closed_Fist":
+        if (rightHandGgesture != "Closed_Fist")
+        {
+          pianoC.start();
+          pianoE.start();
+          pianoG.start();
+        }
+        break;
       case "None":
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
         previousRightHandGesture = "None";
