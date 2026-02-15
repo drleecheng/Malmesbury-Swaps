@@ -139,7 +139,6 @@ function draw()
       PrintLandmarkPoints();
     }
     
-    console.log(previousRightHandGesture);
     switch (rightHandGesture)
     {
       case "Pointing_Up":
@@ -179,6 +178,7 @@ function draw()
           currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
           previousRightHandGesture = "Pointing_Up";
         } 
+        break;
       case "None":
         currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
         previousRightHandGesture = "None";
