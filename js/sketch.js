@@ -71,49 +71,64 @@ function startWebcam() {
   }
 }
 
+function DetermineGesture() {
+  // determine currentGesture
+  currentGesture = gestures_results.gestures[i][0].categoryName;
+  // determine whether it's left or right hand
+  // store the single position to posLeftHand or posRightHand
+  let tempHand = gestures_results.handednesses[i][0].displayName;
+  let right_or_left = tempHand === "Left" ? "Left" : "Right";
+  if (right_or_left == "Left")
+  {
+    posLeftHand = 
+    {
+      x: gestures_results.landmarks[i][0].x * width,
+      y: gestures_results.landmarks[i][0].y * height,
+    };
+    switch (currentGesture)
+    {
+    case "Pointing_Up": 
+        leftHandGesture = "Pointing_Up";
+      break;
+    case "Closed_Fist": 
+        leftHandGesture = "Closed_Fist";
+      break;
+    default:
+        leftHandGesture = "None";
+      break;
+    }
+  }
+  else 
+  {
+    posRightHand = {
+      x: gestures_results.landmarks[i][0].x * width,
+      y: gestures_results.landmarks[i][0].y * height,
+    };
+        switch (currentGesture)
+    {
+    case "Pointing_Up": 
+        rightHandGesture = "Pointing_Up";
+      break;
+    case "Closed_Fist": 
+        rightHandGesture = "Closed_Fist";
+      break;
+    default:
+        rightHandGesture = "None";
+      break;
+    }
+  }
+}
+
 function draw() 
 {
   if (cam) { image(cam, 0, 0, width, height); }
   // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   if (gestures_results) {
-    // determine whether it's left or right hand
-    // store the single position to posLeftHand or posRightHand
+
+
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
-      currentGesture = gestures_results.gestures[i][0].categoryName;
-      let tempHand = gestures_results.handednesses[i][0].displayName;
-      let right_or_left = tempHand === "Left" ? "Left" : "Right";
-      if (right_or_left == "Left")
-        posLeftHand = {
-          x: gestures_results.landmarks[i][0].x * width,
-          y: gestures_results.landmarks[i][0].y * height,
-        };
-      else 
-        posRightHand = {
-          x: gestures_results.landmarks[i][0].x * width,
-          y: gestures_results.landmarks[i][0].y * height,
-        };
-      //text overlay and coloring
-      switch (currentGesture)
-      {
-        case "Pointing_Up": 
-          fill(melodyColor);
-          stroke(255);
-           if (right_or_left == "Left")
-            leftHandGesture = "Pointing_Up";
-          else 
-            rightHandGesture = "Pointing_Up";
-          break;
-        case "Closed_Fist": 
-          fill(chordColor);
-          stroke(255);
-           if (right_or_left == "Left")
-            leftHandGesture = "Closed_Fist";
-          else 
-            rightHandGesture = "Closed_Fist";
-          break;
-      }
-
+      DetermineGesture();
       //point colors
       if (gestures_results.landmarks) {
         for (const landmarks of gestures_results.landmarks) {
