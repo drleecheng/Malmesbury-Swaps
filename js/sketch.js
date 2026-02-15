@@ -8,8 +8,8 @@ var currentLeft;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
-var leftHandGgesture = "nothing";
-var rightHandGgesture = "nothing";
+var leftHandGesture = "nothing";
+var rightHandGesture = "nothing";
 var currentRightHandLevel = 0;
 var currentLeftHandLevel = 0;
 var posLeftHand = {x:0,y:0};
@@ -110,17 +110,17 @@ function draw()
           fill(melodyColor);
           stroke(255);
            if (right_or_left == "Left")
-            isLeftHandTriggered = true;
-            else
-            isRightHandTriggered = true;
+            leftHandGesture = "Pointing_Up";
+          else 
+            rightHandGesture = "Pointing_Up";
           break;
         case "Closed_Fist": 
           fill(chordColor);
           stroke(255);
            if (right_or_left == "Left")
-            isLeftHandTriggered = true;
-            else
-            isRightHandTriggered = true;
+            leftHandGesture = "Closed_Fist";
+          else 
+            rightHandGesture = "Closed_Fist";
           break;
       }
 
