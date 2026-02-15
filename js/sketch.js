@@ -183,9 +183,6 @@ function draw()
         default:
           break;
       }
-      
-      rightHandGgesture = "None";
-      leftHandGgesture = "None";
     }
   }
 }
