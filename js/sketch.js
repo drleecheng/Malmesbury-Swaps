@@ -159,6 +159,7 @@ function draw()
       switch (name)
       {
         case "Pointing_Up":
+          current_gesture = "Pointing_Up";
           if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
             if (isRightHandTriggered)
             {
@@ -232,9 +233,13 @@ function draw()
             }    
         break;
         case "Closed_Fist": 
+            if (current_gesture != "Closed_Fist")
+            {
             pianoC.start();
             pianoE.start();
             pianoG.start();
+            }
+            current_gesture = "Closed_Fist";
         break;
       }
     }
