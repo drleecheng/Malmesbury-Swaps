@@ -186,6 +186,7 @@ function draw()
           pianoC.start();
           pianoE.start();
           pianoG.start();
+          previousRightHandGesture = "Closed_Fist";
         }
         break;
       case "None":
