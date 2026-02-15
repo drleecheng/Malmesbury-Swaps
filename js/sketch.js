@@ -240,6 +240,9 @@ function draw()
             pianoG.start();
             }
             current_gesture = "Closed_Fist";
+          break;
+        default:
+            current_gesture = "None";
         break;
       }
     }
