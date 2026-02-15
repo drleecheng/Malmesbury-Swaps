@@ -1,8 +1,6 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-var melodyColor;
-var chordColor;
 var currentRight;
 var currentLeft;
 var currentHand;
@@ -46,10 +44,6 @@ function setup() {
   pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
-  
-  // Defining colors for landmarks
-  melodyColor = color(0, 255, 0);
-  chordColor = color(255, 0, 0);
 }
 
 function windowResized() {
@@ -121,6 +115,18 @@ function DetermineGesture(i) {
   }
 }
 
+function PrintLandmarkPoints() 
+{
+  for (const landmarks of gestures_results.landmarks) {
+    for (let landmark of landmarks) {
+      stroke(255);
+      strokeWeight(2);
+      fill(color(0, 255, 0));
+      circle(landmark.x * width, landmark.y * height, 10);
+    }
+  }
+}
+
 function draw() 
 {
   if (cam) { image(cam, 0, 0, width, height); }
@@ -128,26 +134,8 @@ function draw()
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
       DetermineGesture(i);
-      //point colors
-      //PrintLandmarkPoints();
-      for (const landmarks of gestures_results.landmarks) {
-        for (let landmark of landmarks) {
-          stroke(255);
-          strokeWeight(2);
-          switch (currentGesture)
-          {  
-            case "Pointing_Up": 
-             fill(melodyColor);
-             circle(landmark.x * width, landmark.y * height, 10);
-            break;
-            case "Closed_Fist": 
-              fill(chordColor);
-             square(landmark.x * width, landmark.y * height, 10);
-            break;
-          }
-        }
-      }
-
+      PrintLandmarkPoints();
+      
       //make sound
       switch (currentGesture)
       {
