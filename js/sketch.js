@@ -135,8 +135,63 @@ function draw()
     {
       DetermineGesture(i);
       PrintLandmarkPoints();
+    }
+    
+    if (rightHandGesture != "None")
+    {
+      switch (rightHandGesture)
+      {
+        case "Pointing_Up":
+          if ((rightHandGesture != Pointing_Up) && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
+          {
+            currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
+            currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+            switch (currentRightHandLevel) 
+            {
+              case 0:
+                currentRightHandNote = 72;
+                break;
+              case 1:
+                currentRightHandNote = 74;
+                break;
+              case 2:
+                currentRightHandNote = 76;
+                break;
+              case 3:
+                currentRightHandNote = 77;
+                break;
+              case 4:
+                currentRightHandNote = 79;
+                break;
+              case 5:
+                currentRightHandNote = 81;
+                break;
+              case 6:
+                currentRightHandNote = 83;
+                break;
+              case 7:
+                currentRightHandNote = 84;
+                break;
+              default:
+                break;
+            }
+            currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
+          } 
+        case "None":
+          currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+          break;
+        default:
+          break;
+      }
       
-      //make sound
+      rightHandGgesture = "None";
+      leftHandGgesture = "None";
+    }
+  }
+}
+
+
+/*
       switch (currentGesture)
       {
         case "Pointing_Up":
@@ -227,7 +282,7 @@ function draw()
             pianoG.start();
           }
             leftHandGgesture = "Closed_Fist";
-          break;*/
+          break;
         default:
             leftHandGgesture = "None";
             rightHandGgesture = "None";
@@ -236,13 +291,9 @@ function draw()
     }
     if (rightHandGgesture == "None") 
     {
-      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
     }
     if (leftHandGgesture == "None") 
     {
       currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
     }
-  }
-  rightHandGgesture = "None";
-  leftHandGgesture = "None";
-}
+  }*/
