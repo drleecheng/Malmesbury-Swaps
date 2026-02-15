@@ -50,8 +50,8 @@ function setup() {
   currentLeft.toMaster();
   });
   pianoC = new Tone.Player("../samples/piano/C3.wav").toDestination();
-  pianoE = new Tone.Player("../samples/piano/CE.wav").toDestination();
-  pianoG = new Tone.Player("../samples/piano/CG.wav").toDestination();
+  pianoE = new Tone.Player("../samples/piano/E3.wav").toDestination();
+  pianoG = new Tone.Player("../samples/piano/G3.wav").toDestination();
 }
 
 function windowResized() {
