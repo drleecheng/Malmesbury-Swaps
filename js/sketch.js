@@ -186,8 +186,9 @@ function draw()
       default:
         break;
     }
+    rightHandGesture = "None";
+    leftHandGesture = "None";
   }
-  
 }
 
 
