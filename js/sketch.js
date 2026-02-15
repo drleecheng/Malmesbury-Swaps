@@ -180,7 +180,7 @@ function draw()
         } 
         break;
       case "Closed_Fist":
-        if (rightHandGgesture != "Closed_Fist")
+        if (rightHandGesture != "Closed_Fist")
         {
           pianoC.start();
           pianoE.start();
