@@ -141,7 +141,6 @@ function draw()
       switch (name)
       {
         case "Pointing_Up":
-          current_gesture = "Pointing_Up";
           if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
             if (rightHandGesture = "Pointing_Up")
             {
