@@ -1,7 +1,7 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-var gesturePointColor = color(0, 255, 0);
+var gesturePointColor;
 var currentRight;
 var currentLeft;
 var instruments;
@@ -34,13 +34,6 @@ function setup() {
     instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
   });
 
-  function windowResized() {
-      let aspectRatio = 4 / 3;
-  if (windowWidth > windowHeight)
-    resizeCanvas(windowHeight * aspectRatio, windowHeight);
-  else
-    resizeCanvas(windowWidth, windowWidth * aspectRatio);
-  }
 
   Tone.Buffer.on('load', function() {
   currentRight = instruments["violin"];
@@ -51,10 +44,16 @@ function setup() {
   pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
+  
+  var gesturePointColor = color(0, 255, 0);
 }
 
 function windowResized() {
-   resizeCanvas(windowWidth, windowHeight);
+  let aspectRatio = 4 / 3;
+  if (windowWidth > windowHeight)
+    resizeCanvas(windowHeight * aspectRatio, windowHeight);
+  else
+    resizeCanvas(windowWidth, windowWidth * aspectRatio);
 }
 
 function startWebcam() {
