@@ -129,7 +129,7 @@ function draw()
     {
       DetermineGesture(i);
       //point colors
-      PrintLandmarkPoints();
+      //PrintLandmarkPoints();
       for (const landmarks of gestures_results.landmarks) {
         for (let landmark of landmarks) {
           stroke(255);
