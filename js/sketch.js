@@ -8,7 +8,8 @@ var currentLeft;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
-var current_gesture = "nothing";
+var leftHandGgesture = "nothing";
+var rightHandGgesture = "nothing";
 var currentRightHandLevel = 0;
 var currentLeftHandLevel = 0;
 var posLeftHand = {x:0,y:0};
@@ -195,6 +196,7 @@ function draw()
                   break;
               }
               currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
+              rightHandGgesture = "Pointing_Up";
             }    
             else if (isLeftHandTriggered)
             {
@@ -230,19 +232,35 @@ function draw()
                   break;
               }
               currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+              leftHandGgesture = "Pointing_Up";
             }    
         break;
         case "Closed_Fist": 
-            if (current_gesture != "Closed_Fist")
+          if (isRightHandTriggered)
+          {
+            if (rightHandGgesture != "Closed_Fist")
             {
             pianoC.start();
             pianoE.start();
             pianoG.start();
             }
-            current_gesture = "Closed_Fist";
+            rightHandGgesture = "Closed_Fist";
+          }
+
+          if (isLeftHandTriggered)
+          {
+            if (leftHandGgesture != "Closed_Fist")
+            {
+            pianoC.start();
+            pianoE.start();
+            pianoG.start();
+            }
+            leftHandGgesture = "Closed_Fist";
+          }
           break;
         default:
-            current_gesture = "None";
+            leftHandGgesture = "None";
+            rightHandGgesture = "None";
         break;
       }
     }
