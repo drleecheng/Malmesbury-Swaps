@@ -139,56 +139,54 @@ function draw()
       PrintLandmarkPoints();
     }
     
-    if (rightHandGesture != "None")
+    switch (rightHandGesture)
     {
-      switch (rightHandGesture)
-      {
-        case "Pointing_Up":
-          if ((previousRightHandGesture != "Pointing_Up") && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
-          {
-            currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
-            currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-            switch (currentRightHandLevel) 
-            {
-              case 0:
-                currentRightHandNote = 72;
-                break;
-              case 1:
-                currentRightHandNote = 74;
-                break;
-              case 2:
-                currentRightHandNote = 76;
-                break;
-              case 3:
-                currentRightHandNote = 77;
-                break;
-              case 4:
-                currentRightHandNote = 79;
-                break;
-              case 5:
-                currentRightHandNote = 81;
-                break;
-              case 6:
-                currentRightHandNote = 83;
-                break;
-              case 7:
-                currentRightHandNote = 84;
-                break;
-              default:
-                break;
-            }
-            currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
-            previousRightHandGesture = "Pointing_Up";
-          } 
-        case "None":
+      case "Pointing_Up":
+        if ((previousRightHandGesture != "Pointing_Up") && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
+        {
+          currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
           currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-          previousRightHandGesture = "None";
-          break;
-        default:
-          break;
-      }
+          switch (currentRightHandLevel) 
+          {
+            case 0:
+              currentRightHandNote = 72;
+              break;
+            case 1:
+              currentRightHandNote = 74;
+              break;
+            case 2:
+              currentRightHandNote = 76;
+              break;
+            case 3:
+              currentRightHandNote = 77;
+              break;
+            case 4:
+              currentRightHandNote = 79;
+              break;
+            case 5:
+              currentRightHandNote = 81;
+              break;
+            case 6:
+              currentRightHandNote = 83;
+              break;
+            case 7:
+              currentRightHandNote = 84;
+              break;
+            default:
+              break;
+          }
+          currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
+          previousRightHandGesture = "Pointing_Up";
+        } 
+      case "None":
+        currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+        previousRightHandGesture = "None";
+        break;
+      default:
+        break;
     }
   }
+  
 }
 
 
