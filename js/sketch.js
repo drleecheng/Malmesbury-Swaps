@@ -71,8 +71,9 @@ function startWebcam() {
   }
 }
 
-function DetermineGesture() {
+function DetermineGesture(i) {
   // determine currentGesture
+  // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   currentGesture = gestures_results.gestures[i][0].categoryName;
   // determine whether it's left or right hand
   // store the single position to posLeftHand or posRightHand
@@ -122,13 +123,10 @@ function DetermineGesture() {
 function draw() 
 {
   if (cam) { image(cam, 0, 0, width, height); }
-  // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   if (gestures_results) {
-
-
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
-      DetermineGesture();
+      DetermineGesture(i);
       //point colors
       if (gestures_results.landmarks) {
         for (const landmarks of gestures_results.landmarks) {
