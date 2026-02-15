@@ -33,7 +33,6 @@ function setup() {
     instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
   });
 
-
   Tone.Buffer.on('load', function() {
   currentRight = instruments["violin"];
   currentRight.toMaster();
@@ -76,18 +75,12 @@ function draw()
   if (cam) {
     image(cam, 0, 0, width, height);
   }
-  // 各頂点座標を表示する
-  // 各頂点座標の位置と番号の対応は以下のURLを確認
   // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   if (gestures_results) {
-
     // determine whether it's left or right hand
     // store the single position to posLeftHand or posRightHand
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
-      noStroke();
-      noFill();
-      textSize(20);
       let name = gestures_results.gestures[i][0].categoryName;
       let tempHand = gestures_results.handednesses[i][0].displayName;
       let right_or_left = tempHand === "Left" ? "Left" : "Right";
