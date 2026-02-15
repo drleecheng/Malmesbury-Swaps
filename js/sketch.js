@@ -5,6 +5,7 @@ var melodyColor;
 var chordColor;
 var currentRight;
 var currentLeft;
+var currentHand;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
@@ -78,8 +79,8 @@ function DetermineGesture(i) {
   // determine whether it's left or right hand
   // store the single position to posLeftHand or posRightHand
   let tempHand = gestures_results.handednesses[i][0].displayName;
-  let right_or_left = tempHand === "Left" ? "Left" : "Right";
-  if (right_or_left == "Left")
+  let currentHand = tempHand === "Left" ? "Left" : "Right";
+  if (currentHand == "Left")
   {
     posLeftHand = 
     {
@@ -105,7 +106,7 @@ function DetermineGesture(i) {
       x: gestures_results.landmarks[i][0].x * width,
       y: gestures_results.landmarks[i][0].y * height,
     };
-        switch (currentGesture)
+    switch (currentGesture)
     {
     case "Pointing_Up": 
         rightHandGesture = "Pointing_Up";
@@ -128,26 +129,24 @@ function draw()
     {
       DetermineGesture(i);
       //point colors
-      //if (gestures_results.landmarks) {
-        for (const landmarks of gestures_results.landmarks) {
-          for (let landmark of landmarks) {
-            stroke(255);
-            strokeWeight(2);
-            switch (currentGesture)
-            {
-                case "Pointing_Up": 
-                  fill(melodyColor);
-                break;
-                case "Closed_Fist": 
-                  fill(chordColor);
-                break;
-            }
-            circle(landmark.x * width, landmark.y * height, 10);
-          }
-        textSize(48);
-        textAlign(CENTER, CENTER);
+      PrintLandmarkPoints();
+      for (const landmarks of gestures_results.landmarks) {
+        for (let landmark of landmarks) {
+          stroke(255);
+          strokeWeight(2);
+          switch (currentGesture)
+          {
+              case "Pointing_Up": 
+                fill(melodyColor);
+                circle(landmark.x * width, landmark.y * height, 10);
+              break;
+              case "Closed_Fist": 
+                fill(chordColor);
+                circle(landmark.x * width, landmark.y * height, 10);
+              break;
+         }
         }
-      //}
+      }
 
       //make sound
       switch (currentGesture)
