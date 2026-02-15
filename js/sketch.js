@@ -139,13 +139,14 @@ function draw()
       PrintLandmarkPoints();
     }
     
+    console.log(previousRightHandGesture);
     switch (rightHandGesture)
     {
       case "Pointing_Up":
-        if ((currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
+        if ((previousRightHandGesture != "Pointing_Up") && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
         {
-          currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
           currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+          currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
           switch (currentRightHandLevel) 
           {
             case 0:
