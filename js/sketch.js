@@ -142,7 +142,7 @@ function draw()
       switch (rightHandGesture)
       {
         case "Pointing_Up":
-          if ((rightHandGesture != Pointing_Up) && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
+          if ((rightHandGesture != "Pointing_Up") && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
           {
             currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
             currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
