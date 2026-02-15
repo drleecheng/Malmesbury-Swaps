@@ -243,11 +243,11 @@ function draw()
         break;
       }
     }
-    if (rightHandGgesture = "None") 
+    if (rightHandGgesture == "None") 
     {
       currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
     }
-    if (leftHandGgesture = "None") 
+    if (leftHandGgesture == "None") 
     {
       currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
     }
