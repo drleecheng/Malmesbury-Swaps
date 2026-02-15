@@ -128,7 +128,7 @@ function draw()
     {
       DetermineGesture(i);
       //point colors
-      if (gestures_results.landmarks) {
+      //if (gestures_results.landmarks) {
         for (const landmarks of gestures_results.landmarks) {
           for (let landmark of landmarks) {
             stroke(255);
@@ -147,7 +147,7 @@ function draw()
         textSize(48);
         textAlign(CENTER, CENTER);
         }
-      }
+      //}
 
       //make sound
       switch (currentGesture)
