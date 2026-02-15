@@ -1,8 +1,7 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-var randomColor = [];
-var thisColor;
+var gesturePointColor = Color(0, 255, 0);
 var currentRight;
 var currentLeft;
 var instruments;
@@ -21,7 +20,6 @@ var pianoE;
 var pianoG;
 
 function setup() {
-  randomColor.push(color(255,0,0), color(0,255,0), color(0,0,255), color(255,255,0), color(0,255,255), color(255,0,255), color(192,192,192));
   let aspectRatio = 4 / 3;
   if (windowWidth > windowHeight)
     p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
@@ -90,15 +88,6 @@ function draw()
       noStroke();
       noFill();
       textSize(20);
-      //set the color
-      if (i < randomColor.length)
-      {
-        thisColor = randomColor[i];
-      }
-      else
-      {
-        thisColor = randomColor[i%randomColor.length];
-      }
       let name = gestures_results.gestures[i][0].categoryName;
       let tempHand = gestures_results.handednesses[i][0].displayName;
       let right_or_left = tempHand === "Left" ? "Left" : "Right";
@@ -116,7 +105,7 @@ function draw()
       switch (name)
       {
         case "Pointing_Up": 
-          fill(thisColor);
+          fill(gesturePointColor);
           stroke(255);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
@@ -124,7 +113,7 @@ function draw()
             isRightHandTriggered = true;
           break;
         case "Closed_Fist": 
-          fill(thisColor);
+          fill(gesturePointColor);
           stroke(255);
            if (right_or_left == "Left")
             isLeftHandTriggered = true;
@@ -142,17 +131,16 @@ function draw()
             switch (name)
             {
                 case "Pointing_Up": 
-                  fill(thisColor);
+                  fill(gesturePointColor);
                 break;
                 case "Closed_Fist": 
-                  fill(thisColor);
+                  fill(gesturePointColor);
                 break;
             }
             circle(landmark.x * width, landmark.y * height, 10);
           }
         textSize(48);
         textAlign(CENTER, CENTER);
-        //text(str(landmarks[0].y-landmarks[8].y), posRightHand.x, posRightHand.y); // range around 0.1-0.5
         }
       }
 
