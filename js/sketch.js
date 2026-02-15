@@ -120,7 +120,7 @@ function draw()
           for (let landmark of landmarks) {
             stroke(255);
             strokeWeight(2);
-            switch (ncurrentGestureame)
+            switch (currentGesture)
             {
                 case "Pointing_Up": 
                   fill(melodyColor);
