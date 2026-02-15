@@ -1,7 +1,7 @@
 let gestures_results;
 let cam = null;
 let p5canvas = null;
-var gesturePointColor = Color(0, 255, 0);
+var gesturePointColor = color(0, 255, 0);
 var currentRight;
 var currentLeft;
 var instruments;
