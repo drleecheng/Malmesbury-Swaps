@@ -135,16 +135,16 @@ function draw()
           stroke(255);
           strokeWeight(2);
           switch (currentGesture)
-          {
-              case "Pointing_Up": 
-                fill(melodyColor);
-                circle(landmark.x * width, landmark.y * height, 10);
-              break;
-              case "Closed_Fist": 
-                fill(chordColor);
-                circle(landmark.x * width, landmark.y * height, 10);
-              break;
-         }
+          {  
+            case "Pointing_Up": 
+             fill(melodyColor);
+             circle(landmark.x * width, landmark.y * height, 10);
+            break;
+            case "Closed_Fist": 
+              fill(chordColor);
+             square(landmark.x * width, landmark.y * height, 10);
+            break;
+          }
         }
       }
 
