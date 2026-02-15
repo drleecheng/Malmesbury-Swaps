@@ -45,7 +45,7 @@ function setup() {
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
   
-  var gesturePointColor = color(0, 255, 0);
+  gesturePointColor = color(0, 255, 0);
 }
 
 function windowResized() {
