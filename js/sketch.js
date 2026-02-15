@@ -8,6 +8,7 @@ var currentLeft;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
+var currentGesture;
 var leftHandGesture = "nothing";
 var rightHandGesture = "nothing";
 var currentRightHandLevel = 0;
@@ -19,6 +20,7 @@ var pianoE;
 var pianoG;
 
 function setup() {
+  // fitting the canvas according to the window's size
   let aspectRatio = 4 / 3;
   if (windowWidth > windowHeight)
     p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
@@ -33,6 +35,7 @@ function setup() {
     instruments: ["violin","flute"], ext: ".wav", baseUrl: "samples/"
   });
 
+  // Setting up the sound libraries
   Tone.Buffer.on('load', function() {
   currentRight = instruments["violin"];
   currentRight.toMaster();
@@ -43,6 +46,7 @@ function setup() {
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
   
+  // Defining colors for landmarks
   melodyColor = color(0, 255, 0);
   chordColor = color(255, 0, 0);
 }
@@ -56,32 +60,27 @@ function windowResized() {
 }
 
 function startWebcam() {
-  // If the function setCameraStreamToMediaPipe is defined in the window object, the camera stream is set to MediaPipe.
+  // If the function setCameraStreamToMediaPipe is defined in the window object, 
+  // the camera stream is set to MediaPipe.
   if (window.setCameraStreamToMediaPipe) {
     cam = createCapture(VIDEO);
     cam.hide();
     cam.elt.onloadedmetadata = function () {
       window.setCameraStreamToMediaPipe(cam.elt);
     }
-    //p5canvas.style('max-width', '1024px');
-    //p5canvas.style('max-height', '75%');
   }
-  
 }
 
 function draw() 
 {
-  background(128);
-  if (cam) {
-    image(cam, 0, 0, width, height);
-  }
+  if (cam) { image(cam, 0, 0, width, height); }
   // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   if (gestures_results) {
     // determine whether it's left or right hand
     // store the single position to posLeftHand or posRightHand
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
-      let name = gestures_results.gestures[i][0].categoryName;
+      currentGesture = gestures_results.gestures[i][0].categoryName;
       let tempHand = gestures_results.handednesses[i][0].displayName;
       let right_or_left = tempHand === "Left" ? "Left" : "Right";
       if (right_or_left == "Left")
@@ -95,7 +94,7 @@ function draw()
           y: gestures_results.landmarks[i][0].y * height,
         };
       //text overlay and coloring
-      switch (name)
+      switch (currentGesture)
       {
         case "Pointing_Up": 
           fill(melodyColor);
@@ -121,7 +120,7 @@ function draw()
           for (let landmark of landmarks) {
             stroke(255);
             strokeWeight(2);
-            switch (name)
+            switch (ncurrentGestureame)
             {
                 case "Pointing_Up": 
                   fill(melodyColor);
@@ -138,7 +137,7 @@ function draw()
       }
 
       //make sound
-      switch (name)
+      switch (currentGesture)
       {
         case "Pointing_Up":
           if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
