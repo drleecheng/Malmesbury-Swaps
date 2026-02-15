@@ -177,6 +177,7 @@ function draw()
           }
           currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
           previousRightHandGesture = "Pointing_Up";
+          rightHandGesture = "None";
         } 
         break;
       case "Closed_Fist":
@@ -194,8 +195,6 @@ function draw()
       default:
         break;
     }
-    rightHandGesture = "None";
-    leftHandGesture = "None";
   }
 }
 
