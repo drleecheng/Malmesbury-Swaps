@@ -8,8 +8,10 @@ var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
 var currentGesture;
-var leftHandGesture = "nothing";
-var rightHandGesture = "nothing";
+var previousLeftHandGesture = "None";
+var previousRightHandGesture = "None";
+var leftHandGesture = "None";
+var rightHandGesture = "None";
 var currentRightHandLevel = 0;
 var currentLeftHandLevel = 0;
 var posLeftHand = {x:0,y:0};
@@ -142,7 +144,7 @@ function draw()
       switch (rightHandGesture)
       {
         case "Pointing_Up":
-          if ((rightHandGesture != "Pointing_Up") && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
+          if ((previousRightHandGesture != "Pointing_Up") && (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
           {
             currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
             currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
@@ -176,9 +178,11 @@ function draw()
                 break;
             }
             currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
+            previousRightHandGesture = "Pointing_Up";
           } 
         case "None":
           currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+          previousRightHandGesture = "None";
           break;
         default:
           break;
