@@ -84,6 +84,7 @@ function DetermineGesture(i) {
       x: gestures_results.landmarks[i][0].x * width,
       y: gestures_results.landmarks[i][0].y * height,
     };
+    console.log("fucjk");
     isRightHandPlaying = true;
     switch (currentGesture)
     {
