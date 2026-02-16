@@ -267,15 +267,17 @@ function draw()
     PlayLeftHandGesture();
   }
   if (isLeftHandPlaying == false)
-    if (currentLeft) currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+  {
+    if (currentLeft) 
+      currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+  }
   else
     isLeftHandPlaying = false;
   if (isRightHandPlaying == false)
+  {
     if (currentRight) 
-      {
-        console.log("release right hand note");
-        currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-      }
+      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+  }
     else
       isRightHandPlaying = false;
 }
