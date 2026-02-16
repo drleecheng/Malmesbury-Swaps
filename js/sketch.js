@@ -271,7 +271,11 @@ function draw()
   else
     isLeftHandPlaying = false;
   if (isRightHandPlaying == false)
-    if (currentRight) currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+    if (currentRight) 
+      {
+        console.log("release");
+        currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+      }
   else
     isRightHandPlaying = false;
 }
