@@ -3,7 +3,8 @@ let cam = null;
 let p5canvas = null;
 var currentRight;
 var currentLeft;
-var currentHand;
+var isRightHandPlaying = false;
+var isLeftHandPlaying = false;
 var instruments;
 var currentLeftHandNote = 0;
 var currentRightHandNote = 0;
@@ -83,6 +84,7 @@ function DetermineGesture(i) {
       x: gestures_results.landmarks[i][0].x * width,
       y: gestures_results.landmarks[i][0].y * height,
     };
+    isRightHandPlaying = true;
     switch (currentGesture)
     {
     case "Pointing_Up": 
@@ -102,6 +104,7 @@ function DetermineGesture(i) {
       x: gestures_results.landmarks[i][0].x * width,
       y: gestures_results.landmarks[i][0].y * height,
     };
+    isLeftHandPlaying = true;
     switch (currentGesture)
     {
     case "Pointing_Up": 
@@ -183,7 +186,6 @@ function PlayRightHandGesture()
       }
       break;
     case "None":
-      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
       previousRightHandGesture = "None";
       break;
     default:
@@ -227,7 +229,7 @@ function PlayLeftHandGesture()
             currentLeftHandNote = 84;
             break;
           default:
-            currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+            currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
             break;
         }
         currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
@@ -245,7 +247,6 @@ function PlayLeftHandGesture()
       }
       break;
     case "None":
-      currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
       previousLeftHandGesture = "None";
       break;
     default:
@@ -265,5 +266,11 @@ function draw()
     PlayRightHandGesture();
     PlayLeftHandGesture();
   }
+  if (isLeftHandPlaying == false)
+    currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+  if (isRightHandPlaying == false)
+    currentRight.triggerAttack(Tone.Frequency(currenRightHandNote, "midi").toNote());
+  isLeftHandPlaying = false;
+  isRightHandPlaying = false;
 }
 
