@@ -21,7 +21,14 @@ var pianoC;
 var pianoE;
 var pianoG;
 
-function preload() {
+function setup() {
+  // fitting the canvas according to the window's size
+  let aspectRatio = 4 / 3;
+  if (windowWidth > windowHeight)
+    p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
+  else
+    p5canvas = createCanvas(windowWidth, windowWidth * aspectRatio);
+  p5canvas.parent('#canvas');
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
     gestures_results = results;
@@ -34,24 +41,12 @@ function preload() {
   Tone.Buffer.on('load', function() {
   currentRight = instruments["violin"];
   currentRight.toMaster();
-  currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
   currentLeft = instruments["flute"];
   currentLeft.toMaster();
-  currentLeft.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
   });
   pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
-}
-
-function setup() {
-  // fitting the canvas according to the window's size
-  let aspectRatio = 4 / 3;
-  if (windowWidth > windowHeight)
-    p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
-  else
-    p5canvas = createCanvas(windowWidth, windowWidth * aspectRatio);
-  p5canvas.parent('#canvas');
 }
 
 function windowResized() {
@@ -272,11 +267,11 @@ function draw()
     PlayLeftHandGesture();
   }
   if (isLeftHandPlaying == false)
-    currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+    if (currentLeft) currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
   else
     isLeftHandPlaying = false;
   if (isRightHandPlaying == false)
-    currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+    if (currentRight) currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
   else
     isRightHandPlaying = false;
 }
