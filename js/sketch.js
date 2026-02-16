@@ -254,18 +254,9 @@ function PlayLeftHandGesture()
   }
 }
 
-function draw() 
+function ReleaseRemainingNotes()
 {
-  if (cam) { image(cam, 0, 0, width, height); }
-  if (gestures_results) {
-    for (let i = 0; i < gestures_results.gestures.length; i++) 
-    {
-      DetermineGesture(i);
-      PrintLandmarkPoints();
-    }
-    PlayRightHandGesture();
-    PlayLeftHandGesture();
-  }
+  // If hand is out of sight, stop the sound
   if (isLeftHandPlaying == false)
   {
     if (currentLeft) 
@@ -280,5 +271,21 @@ function draw()
   }
     else
       isRightHandPlaying = false;
+}
+
+function draw() 
+{
+  if (cam) { image(cam, 0, 0, width, height); }
+  if (gestures_results) {
+    for (let i = 0; i < gestures_results.gestures.length; i++) 
+    {
+      DetermineGesture(i);
+      PrintLandmarkPoints();
+    }
+    PlayRightHandGesture();
+    PlayLeftHandGesture();
+  }
+  ReleaseRemainingNotes();
+  line(30, 20, 85, 75);
 }
 
