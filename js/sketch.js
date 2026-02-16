@@ -165,6 +165,7 @@ function PlayRightHandGesture()
             currentRightHandNote = 84;
             break;
           default:
+            currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
             break;
         }
         currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
@@ -226,6 +227,7 @@ function PlayLeftHandGesture()
             currentLeftHandNote = 84;
             break;
           default:
+            currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
             break;
         }
         currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
@@ -265,110 +267,3 @@ function draw()
   }
 }
 
-
-/*
-      switch (currentGesture)
-      {
-        case "Pointing_Up":
-          if (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11)))
-            if (rightHandGesture = "Pointing_Up")
-            {
-              currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
-              currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-              switch (currentRightHandLevel) 
-              {
-                case 0:
-                  currentRightHandNote = 72;
-                  break;
-                case 1:
-                  currentRightHandNote = 74;
-                  break;
-                case 2:
-                  currentRightHandNote = 76;
-                  break;
-                case 3:
-                  currentRightHandNote = 77;
-                  break;
-                case 4:
-                  currentRightHandNote = 79;
-                  break;
-                case 5:
-                  currentRightHandNote = 81;
-                  break;
-                case 6:
-                  currentRightHandNote = 83;
-                  break;
-                case 7:
-                  currentRightHandNote = 84;
-                  break;
-                default:
-                  break;
-              }
-              currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
-            }    
-            else if (leftHandGesture = "Pointing_Up")
-            {
-              currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
-              currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-              switch (currentLeftHandLevel) 
-              {
-                case 0:
-                  currentLeftHandNote = 72;
-                  break;
-                case 1:
-                  currentLeftHandNote = 74;
-                  break;
-                case 2:
-                  currentLeftHandNote = 76;
-                  break;
-                case 3:
-                  currentLeftHandNote = 77;
-                  break;
-                case 4:
-                  currentLeftHandNote = 79;
-                  break;
-                case 5:
-                  currentLeftHandNote = 81;
-                  break;
-                case 6:
-                  currentLeftHandNote = 83;
-                  break;
-                case 7:
-                  currentLeftHandNote = 84;
-                  break;
-                default:
-                  break;
-              }
-              currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-            }    
-          break;
-          /*
-        case "Closed_Fist": 
-          if (rightHandGgesture != "Closed_Fist")
-          {
-            pianoC.start();
-            pianoE.start();
-            pianoG.start();
-          }
-          else if (leftHandGgesture != "Closed_Fist")
-          {
-            pianoC.start();
-            pianoE.start();
-            pianoG.start();
-          }
-            leftHandGgesture = "Closed_Fist";
-          break;
-        default:
-            leftHandGgesture = "None";
-            rightHandGgesture = "None";
-        break;
-      }
-    }
-    if (rightHandGgesture == "None") 
-    {
-    }
-    if (leftHandGgesture == "None") 
-    {
-      currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
-    }
-  }*/
