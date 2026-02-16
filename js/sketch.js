@@ -129,6 +129,128 @@ function PrintLandmarkPoints()
   }
 }
 
+function PlayRightHandGesture()
+{
+  switch (rightHandGesture)
+  {
+    case "Pointing_Up":
+      if ((previousRightHandGesture != "Pointing_Up") || (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
+      {
+        currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+        currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
+        switch (currentRightHandLevel) 
+        {
+          case 0:
+            currentRightHandNote = 72;
+            break;
+          case 1:
+            currentRightHandNote = 74;
+            break;
+          case 2:
+            currentRightHandNote = 76;
+            break;
+          case 3:
+            currentRightHandNote = 77;
+            break;
+          case 4:
+            currentRightHandNote = 79;
+            break;
+          case 5:
+            currentRightHandNote = 81;
+            break;
+          case 6:
+            currentRightHandNote = 83;
+            break;
+          case 7:
+            currentRightHandNote = 84;
+            break;
+          default:
+            break;
+        }
+        currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
+        previousRightHandGesture = "Pointing_Up";
+        rightHandGesture = "None";
+      } 
+      break;
+    case "Closed_Fist":
+      if (previousRightHandGesture != "Closed_Fist")
+      {
+        pianoC.start();
+        pianoE.start();
+        pianoG.start();
+        previousRightHandGesture = "Closed_Fist";
+      }
+      break;
+    case "None":
+      currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+      previousRightHandGesture = "None";
+      break;
+    default:
+      break;
+  }
+}
+
+function PlayLeftHandGesture()
+{
+  switch (leftHandGesture)
+  {
+    case "Pointing_Up":
+      if ((previousLeftHandGesture != "Pointing_Up") || (currentLeftHandLevel != floor(10-(posLeftHand.y-50)/(height/11))))
+      {
+        currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+        currentLeftHandLevel = floor(10-(posLeftHand.y-50)/(height/11));
+        switch (currentLeftHandLevel) 
+        {
+          case 0:
+            currentLeftHandNote = 72;
+            break;
+          case 1:
+            currentLeftHandNote = 74;
+            break;
+          case 2:
+            currentLeftHandNote = 76;
+            break;
+          case 3:
+            currentLeftHandNote = 77;
+            break;
+          case 4:
+            currentLeftHandNote = 79;
+            break;
+          case 5:
+            currentLeftHandNote = 81;
+            break;
+          case 6:
+            currentLeftHandNote = 83;
+            break;
+          case 7:
+            currentLeftHandNote = 84;
+            break;
+          default:
+            break;
+        }
+        currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+        previousLeftHandGesture = "Pointing_Up";
+        leftHandGesture = "None";
+      } 
+      break;
+    case "Closed_Fist":
+      if (previousLeftHandGesture != "Closed_Fist")
+      {
+        pianoC.start();
+        pianoE.start();
+        pianoG.start();
+        previousLeftHandGesture = "Closed_Fist";
+      }
+      break;
+    case "None":
+      currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+      previousLeftHandGesture = "None";
+      break;
+    default:
+      break;
+  }
+}
+
 function draw() 
 {
   if (cam) { image(cam, 0, 0, width, height); }
@@ -138,64 +260,8 @@ function draw()
       DetermineGesture(i);
       PrintLandmarkPoints();
     }
-    
-    switch (rightHandGesture)
-    {
-      case "Pointing_Up":
-        if ((previousRightHandGesture != "Pointing_Up") || (currentRightHandLevel != floor(10-(posRightHand.y-50)/(height/11))))
-        {
-          currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-          currentRightHandLevel = floor(10-(posRightHand.y-50)/(height/11));
-          switch (currentRightHandLevel) 
-          {
-            case 0:
-              currentRightHandNote = 72;
-              break;
-            case 1:
-              currentRightHandNote = 74;
-              break;
-            case 2:
-              currentRightHandNote = 76;
-              break;
-            case 3:
-              currentRightHandNote = 77;
-              break;
-            case 4:
-              currentRightHandNote = 79;
-              break;
-            case 5:
-              currentRightHandNote = 81;
-              break;
-            case 6:
-              currentRightHandNote = 83;
-              break;
-            case 7:
-              currentRightHandNote = 84;
-              break;
-            default:
-              break;
-          }
-          currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
-          previousRightHandGesture = "Pointing_Up";
-          rightHandGesture = "None";
-        } 
-        break;
-      case "Closed_Fist":
-        if (previousRightHandGesture != "Closed_Fist")
-        {
-          pianoC.start();
-          pianoE.start();
-          pianoG.start();
-          previousRightHandGesture = "Closed_Fist";
-        }
-        break;
-      case "None":
-        currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
-        previousRightHandGesture = "None";
-        break;
-      default:
-        break;
-    }
+    PlayRightHandGesture();
+    PlayLeftHandGesture();
   }
 }
 
