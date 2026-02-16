@@ -266,7 +266,13 @@ function draw()
     PlayRightHandGesture();
     PlayLeftHandGesture();
   }
-  isLeftHandPlaying = false;
-  isRightHandPlaying = false;
+  if (isLeftHandPlaying == false)
+    currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
+  else
+    isLeftHandPlaying = false;
+  if (isRightHandPlaying == false)
+    currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
+  else
+    isRightHandPlaying = false;
 }
 
