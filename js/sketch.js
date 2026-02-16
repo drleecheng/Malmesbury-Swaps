@@ -21,14 +21,7 @@ var pianoC;
 var pianoE;
 var pianoG;
 
-function setup() {
-  // fitting the canvas according to the window's size
-  let aspectRatio = 4 / 3;
-  if (windowWidth > windowHeight)
-    p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
-  else
-    p5canvas = createCanvas(windowWidth, windowWidth * aspectRatio);
-  p5canvas.parent('#canvas');
+function preload() {
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
     gestures_results = results;
@@ -49,6 +42,16 @@ function setup() {
   pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
+}
+
+function setup() {
+  // fitting the canvas according to the window's size
+  let aspectRatio = 4 / 3;
+  if (windowWidth > windowHeight)
+    p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
+  else
+    p5canvas = createCanvas(windowWidth, windowWidth * aspectRatio);
+  p5canvas.parent('#canvas');
 }
 
 function windowResized() {
