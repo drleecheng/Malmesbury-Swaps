@@ -41,8 +41,10 @@ function setup() {
   Tone.Buffer.on('load', function() {
   currentRight = instruments["violin"];
   currentRight.toMaster();
+  currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
   currentLeft = instruments["flute"];
   currentLeft.toMaster();
+  currentLeft.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
   });
   pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
@@ -267,11 +269,11 @@ function draw()
     PlayLeftHandGesture();
   }
   if (isLeftHandPlaying == false)
-    currentLeft.triggerRelease();
+    currentLeft.triggerRelease(Tone.Frequency(currentLeftHandNote, "midi").toNote());
   else
     isLeftHandPlaying = false;
   if (isRightHandPlaying == false)
-    currentRight.triggerRelease();
+    currentRight.triggerRelease(Tone.Frequency(currentRightHandNote, "midi").toNote());
   else
     isRightHandPlaying = false;
 }
