@@ -269,7 +269,7 @@ function draw()
   if (isLeftHandPlaying == false)
     currentLeft.triggerAttack(Tone.Frequency(currentLeftHandNote, "midi").toNote());
   if (isRightHandPlaying == false)
-    currentRight.triggerAttack(Tone.Frequency(currenRightHandNote, "midi").toNote());
+    currentRight.triggerAttack(Tone.Frequency(currentRightHandNote, "midi").toNote());
   isLeftHandPlaying = false;
   isRightHandPlaying = false;
 }
