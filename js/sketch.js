@@ -84,8 +84,7 @@ function DetermineGesture(i) {
       x: gestures_results.landmarks[i][0].x * width,
       y: gestures_results.landmarks[i][0].y * height,
     };
-    console.log("fucjk");
-    isRightHandPlaying = true;
+    isLeftHandPlaying = true;
     switch (currentGesture)
     {
     case "Pointing_Up": 
@@ -105,7 +104,7 @@ function DetermineGesture(i) {
       x: gestures_results.landmarks[i][0].x * width,
       y: gestures_results.landmarks[i][0].y * height,
     };
-    isLeftHandPlaying = true;
+    isRightHandPlaying = true;
     switch (currentGesture)
     {
     case "Pointing_Up": 
