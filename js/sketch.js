@@ -287,6 +287,9 @@ function draw()
   }
   ReleaseRemainingNotes();
   for (let i = 1; i < 11; i++) 
-    line(0, height/i, width, height/i);
+  {
+    fill(100);
+    line(0, height/11*i, width, height/11*i);
+  }
 }
 
