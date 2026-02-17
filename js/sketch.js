@@ -286,10 +286,5 @@ function draw()
     PlayLeftHandGesture();
   }
   ReleaseRemainingNotes();
-  for (let i = 1; i < 11; i++) 
-  {
-    fill(100);
-    line(0, height/11*i, width, height/11*i);
-  }
 }
 
