@@ -198,9 +198,9 @@ function PlayRightHandGesture()
     case "Open_Palm":
       if (previousRightHandGesture != "Open_Palm")
       {
-        pianoG.stop();
-        pianoB.stop();
-        pianoD.stop();
+        pianoG.start();
+        pianoB.start();
+        pianoD.start();
         previousRightHandGesture = "Open_Palm";
       }
       break;
@@ -268,9 +268,9 @@ function PlayLeftHandGesture()
     case "Open_Palm":
       if (previousLeftHandGesture != "Open_Palm")
       {
-        pianoG.stop();
-        pianoB.stop();
-        pianoD.stop();
+        pianoG.start();
+        pianoB.start();
+        pianoD.start();
         previousLeftHandGesture = "Open_Palm";
       }
       break;
