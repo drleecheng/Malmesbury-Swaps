@@ -20,6 +20,8 @@ var posRightHand = {x:0,y:0};
 var pianoC;
 var pianoE;
 var pianoG;
+var pianoB;
+var pianoD;
 
 function setup() {
   // fitting the canvas according to the window's size
@@ -47,6 +49,8 @@ function setup() {
   pianoC = new Tone.Player("samples/piano/C3.wav").toMaster();
   pianoE = new Tone.Player("samples/piano/E3.wav").toMaster();
   pianoG = new Tone.Player("samples/piano/G3.wav").toMaster();
+  pianoB = new Tone.Player("samples/piano/B3.wav").toMaster();
+  pianoD = new Tone.Player("samples/piano/D4.wav").toMaster();
 }
 
 function windowResized() {
@@ -93,6 +97,9 @@ function DetermineGesture(i) {
     case "Closed_Fist": 
         leftHandGesture = "Closed_Fist";
       break;
+    case "Open_Palm": 
+        leftHandGesture = "Open_Palm";
+      break;
     default:
         leftHandGesture = "None";
       break;
@@ -112,6 +119,9 @@ function DetermineGesture(i) {
       break;
     case "Closed_Fist": 
         rightHandGesture = "Closed_Fist";
+      break;
+    case "Open_Palm": 
+        rightHandGesture = "Open_Palm";
       break;
     default:
         rightHandGesture = "None";
@@ -185,6 +195,15 @@ function PlayRightHandGesture()
         previousRightHandGesture = "Closed_Fist";
       }
       break;
+    case "Open_Palm":
+      if (previousRightHandGesture != "Open_Palm")
+      {
+        pianoG.stop();
+        pianoB.stop();
+        pianoD.stop();
+        previousRightHandGesture = "Open_Palm";
+      }
+      break;
     case "None":
       previousRightHandGesture = "None";
       break;
@@ -244,6 +263,15 @@ function PlayLeftHandGesture()
         pianoE.start();
         pianoG.start();
         previousLeftHandGesture = "Closed_Fist";
+      }
+      break;
+    case "Open_Palm":
+      if (previousLeftHandGesture != "Open_Palm")
+      {
+        pianoG.stop();
+        pianoB.stop();
+        pianoD.stop();
+        previousLeftHandGesture = "Open_Palm";
       }
       break;
     case "None":
