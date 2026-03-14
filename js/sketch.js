@@ -67,7 +67,7 @@ function startWebcam() {
   if (window.setCameraStreamToMediaPipe) {
     cam = createCapture(VIDEO);
     cam.hide();
-    cam.elt.onplaying = () => {
+    cam.elt.onloadedmetadata = () => {
       if (cam.elt.videoWidth > 0 && cam.elt.videoHeight > 0) {
         window.setCameraStreamToMediaPipe(cam.elt);
         console.log("Camera connected to MediaPipe");
