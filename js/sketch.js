@@ -67,7 +67,7 @@ function startWebcam() {
   if (window.setCameraStreamToMediaPipe) {
     cam = createCapture(VIDEO);
     cam.hide();
-    cam.elt.onloadedmetadata = function () {
+    cam.elt.onplaying = function () {
       window.setCameraStreamToMediaPipe(cam.elt);
     }
   }
