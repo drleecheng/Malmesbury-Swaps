@@ -25,7 +25,7 @@ var pianoD;
 
 function setup() {
   // fitting the canvas according to the window's size
-  let aspectRatio = 4 / 3;
+  let aspectRatio = 16 / 9;
   if (windowWidth > windowHeight)
     p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
   else
