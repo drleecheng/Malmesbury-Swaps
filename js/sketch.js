@@ -25,15 +25,22 @@ var pianoD;
 
 function setup() {
   // fitting the canvas according to the window's size
+  let targetRatio = 16 / 9;
+  let w = windowWidth;
+  let h = windowHeight;
 
+  if (windowWidth / windowHeight > targetRatio) {
+    w = windowHeight * targetRatio;
+  } else {
+    h = windowWidth / targetRatio;
+  }
 
-  
-  let aspectRatio = 16 / 9;
-  if (windowWidth > windowHeight)
-    p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
-  else
-    p5canvas = createCanvas(windowWidth, windowWidth * aspectRatio);
+  p5canvas = createCanvas(w * 0.95, h * 0.95); 
   p5canvas.parent('#canvas');
+
+  p5canvas.style('margin', 'auto');
+  p5canvas.style('display', 'block');
+
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
     gestures_results = results;
@@ -57,11 +64,12 @@ function setup() {
 }
 
 function windowResized() {
-  let aspectRatio = 16 / 9;
-  if (windowWidth > windowHeight)
-    resizeCanvas(windowHeight * aspectRatio, windowHeight);
-  else
-    resizeCanvas(windowWidth, windowWidth * aspectRatio);
+// Repeat the logic here so it stays fixed when rotating/resizing
+  let targetRatio = 16 / 9;
+  let w = (windowWidth / windowHeight > targetRatio) ? windowHeight * targetRatio : windowWidth;
+  let h = (windowWidth / windowHeight > targetRatio) ? windowHeight : windowWidth / targetRatio;
+  
+  resizeCanvas(w * 0.95, h * 0.95);
 }
 
 function startWebcam() {
