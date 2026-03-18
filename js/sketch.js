@@ -331,8 +331,11 @@ function ReleaseRemainingNotes()
 
 function draw() 
 {
-  background(0);
-  if (cam) { image(cam, 0, 0, width, height); }
+  if (cam) 
+  { 
+    background(0);
+    image(cam, 0, 0, width, height); 
+  }
   if (gestures_results) {
     for (let i = 0; i < gestures_results.gestures.length; i++) 
     {
