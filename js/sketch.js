@@ -37,7 +37,9 @@ function setup() {
 
   p5canvas = createCanvas(w * 0.95, h * 0.95); 
   p5canvas.parent('#canvas');
-
+  let body = select('body');
+  body.style('margin', '0');
+  body.style('overflow', 'hidden');
   p5canvas.style('margin', 'auto');
   p5canvas.style('display', 'block');
 
