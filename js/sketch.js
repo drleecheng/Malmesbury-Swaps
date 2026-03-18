@@ -41,7 +41,13 @@ function setup() {
   body.style('margin', '0');
   body.style('overflow', 'hidden');
   body.style('background-color', 'black');
-  body.style('display-color', 'block');
+  p5canvas.style('display', 'block');
+  p5canvas.style('margin', 'auto');
+  let container = select('#canvas');
+  container.style('background-color', 'black');
+  container.style('height', '100vh');
+  container.style('display', 'flex');
+  container.style('align-items', 'center');
 
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
@@ -325,6 +331,7 @@ function ReleaseRemainingNotes()
 
 function draw() 
 {
+  background(0);
   if (cam) { image(cam, 0, 0, width, height); }
   if (gestures_results) {
     for (let i = 0; i < gestures_results.gestures.length; i++) 
