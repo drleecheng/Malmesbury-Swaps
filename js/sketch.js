@@ -25,6 +25,9 @@ var pianoD;
 
 function setup() {
   // fitting the canvas according to the window's size
+
+
+  
   let aspectRatio = 16 / 9;
   if (windowWidth > windowHeight)
     p5canvas = createCanvas(windowHeight * aspectRatio, windowHeight);
@@ -54,7 +57,7 @@ function setup() {
 }
 
 function windowResized() {
-  let aspectRatio = 4 / 3;
+  let aspectRatio = 16 / 9;
   if (windowWidth > windowHeight)
     resizeCanvas(windowHeight * aspectRatio, windowHeight);
   else
@@ -65,7 +68,13 @@ function startWebcam() {
   // If the function setCameraStreamToMediaPipe is defined in the window object, 
   // the camera stream is set to MediaPipe.
   if (window.setCameraStreamToMediaPipe) {
-    cam = createCapture(VIDEO);
+    let constraints = {
+      video: {
+        aspectRatio: 16 / 9,
+        facingMode: "user"
+      },
+      audio: false
+    };cam = createCapture(constraints);
     cam.hide();
     cam.elt.onloadedmetadata = () => {
       if (cam.elt.videoWidth > 0 && cam.elt.videoHeight > 0) {
