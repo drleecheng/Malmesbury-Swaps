@@ -40,8 +40,8 @@ function setup() {
   let body = select('body');
   body.style('margin', '0');
   body.style('overflow', 'hidden');
-  p5canvas.style('margin', 'auto');
-  p5canvas.style('display', 'block');
+  body.style('background-color', 'black');
+  body.style('display-color', 'block');
 
   // When gestures are found, the following function is called. The detection results are stored in results.
   gotGestures = function (results) {
