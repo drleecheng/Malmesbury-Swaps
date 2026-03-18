@@ -40,11 +40,9 @@ function setup() {
   let body = select('body');
   body.style('margin', '0');
   body.style('overflow', 'hidden');
-  body.style('background-color', 'black');
   p5canvas.style('display', 'block');
   p5canvas.style('margin', 'auto');
   let container = select('#canvas');
-  container.style('background-color', 'black');
   container.style('height', '100vh');
   container.style('display', 'flex');
   container.style('align-items', 'center');
@@ -333,6 +331,7 @@ function draw()
 {
   if (cam) 
   { 
+    background(0);
     image(cam, 0, 0, width, height); 
   }
   if (gestures_results) {
