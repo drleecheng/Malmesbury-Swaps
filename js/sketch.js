@@ -331,7 +331,6 @@ function draw()
 {
   if (cam) 
   { 
-    background(0);
     image(cam, 0, 0, width, height); 
   }
   if (gestures_results) {
